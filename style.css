@@ -2059,3 +2059,259 @@ header {
         padding: 3rem 1rem;
     }
 }
+
+/* Section background variations */
+.section-light {
+    background: #fafafa !important;
+    position: relative;
+}
+
+.section-white {
+    background: white !important;
+    position: relative;
+}
+
+.section-light-blue {
+    background: #f8fbff !important;
+    position: relative;
+}
+
+.section-white-elevated {
+    background: white !important;
+    position: relative;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.03);
+}
+
+.section-light-gradient {
+    background: linear-gradient(to bottom, #f9f9f9, #f0f4ff) !important;
+    position: relative;
+}
+
+.section-white-textured {
+    background: 
+        linear-gradient(rgba(255,255,255,0.97), rgba(255,255,255,0.97)),
+        url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%235e81f4' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E") !important;
+    position: relative;
+}
+
+/* Section spacing and visual separation */
+.pricing-section,
+.video-services,
+.qr-services,
+.portfolio-section,
+.process-section,
+.faq-section {
+    padding: 6rem 2rem;
+}
+
+/* Section dividers with different styles for visual interest */
+.video-services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(94, 129, 244, 0.2), transparent);
+}
+
+.qr-services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(94, 129, 244, 0.1), rgba(94, 129, 244, 0.3), rgba(94, 129, 244, 0.1));
+}
+
+.portfolio-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.15;
+}
+
+.process-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(94, 129, 244, 0.2) 10px, rgba(94, 129, 244, 0.2) 20px);
+}
+
+.faq-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 40%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.2;
+}
+
+.cta-creative::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Footer email styling */
+.footer-contact {
+    margin-top: 1rem;
+}
+
+.footer-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.footer-email:hover {
+    color: white;
+}
+
+.footer-email i {
+    font-size: 1rem;
+}
+
+/* Remove any conflicting background definitions */
+.pricing-section,
+.video-services,
+.qr-services,
+.portfolio-section,
+.process-section,
+.faq-section {
+    background: transparent !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pricing-section,
+    .video-services,
+    .qr-services,
+    .portfolio-section,
+    .process-section,
+    .faq-section {
+        padding: 4rem 1rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .footer-brand {
+        text-align: center;
+    }
+    
+    .footer-social {
+        order: -1;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-section,
+    .video-services,
+    .qr-services,
+    .portfolio-section,
+    .process-section,
+    .faq-section {
+        padding: 3rem 1rem;
+    }
+}
+
+/* Footer Styles - Desktop (default) */
+.footer-brand {
+    text-align: left;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+    text-align: left;
+}
+
+.footer-contact {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.footer-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+    justify-content: flex-start;
+}
+
+/* Mobile Styles - Only apply on screens 768px and smaller */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        gap: 2rem;
+        justify-items: center;
+    }
+    
+    .footer-brand {
+        text-align: center !important;
+        order: 2;
+    }
+    
+    .footer-social {
+        order: 1;
+        text-align: center;
+    }
+    
+    .footer-contact {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .footer-email {
+        justify-content: center;
+    }
+    
+    .footer-brand .logo {
+        justify-content: center;
+    }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+    .footer-content {
+        gap: 1.5rem;
+    }
+    
+    .footer-email {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}
