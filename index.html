@@ -6,17 +6,21 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-4K1ZHJS94F');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Chill Creatives | Simple Landing Pages & Video Editing</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Added Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☁️</text></svg>">
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
+    <!-- Animated background elements -->
     <div class="floating-shape shape-1"></div>
     <div class="floating-shape shape-2"></div>
     <div class="floating-shape shape-3"></div>
@@ -31,12 +35,13 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero-creative">
             <div class="hero-content">
-                <h1>Simple Landing Pages <span class="highlight">Made Easy</span></h1>
-                <p class="hero-subtitle">Get a professional landing page on your own subdomain in 1-3 days. Add forms or countdown timers as needed.</p>
+                <h1 class="fade-in">Simple Landing Pages <span class="highlight">Made Easy</span></h1>
+                <p class="hero-subtitle fade-in">Get a professional landing page on your own subdomain quickly. Add forms or countdown timers as needed.</p>
                 
-                <div class="hero-cta">
+                <div class="hero-cta fade-in">
                     <a href="order.html" class="cta-button creative-cta">
                         <i class="fas fa-rocket"></i>
                         Get Started for $49
@@ -45,7 +50,7 @@
                 </div>
             </div>
             
-            <div class="hero-visual">
+            <div class="hero-visual fade-in">
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">
@@ -65,7 +70,7 @@
                         <div class="feature-icon">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <span>Fast Delivery</span>
+                        <span>Quick Delivery</span>
                         <p>Ready in 1-3 days</p>
                     </div>
                     <div class="feature-card">
@@ -79,13 +84,14 @@
             </div>
         </section>
 
+        <!-- Pricing Section -->
         <section id="pricing" class="pricing-section">
             <div class="container">
-                <h2>Simple, Transparent Pricing</h2>
-                <p class="section-subtitle">Choose exactly what you need. No hidden fees, no complications.</p>
+                <h2 class="fade-in">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle fade-in">Choose exactly what you need. No packages, no complications.</p>
                 
                 <div class="pricing-grid-simple">
-                    <div class="pricing-card-simple base-card">
+                    <div class="pricing-card-simple base-card fade-in">
                         <h3>The Kickstart Package</h3>
                         <div class="price">$49</div>
                         <div class="price-note">Perfect for short-term projects</div>
@@ -94,51 +100,52 @@
                             <li><i class="fas fa-check"></i> Your own subdomain</li>
                             <li><i class="fas fa-check"></i> Mobile responsive design</li>
                             <li><i class="fas fa-check"></i> Contact form or call-to-action button</li>
-                            <li><i class="fas fa-check"></i> <strong>1-3 day delivery</strong></li>
+                            <li><i class="fas fa-check"></i> 1-3 day delivery</li>
                             <li><i class="fas fa-check"></i> <strong>1-month hosting included</strong></li>
                         </ul>
                     </div>
-                </div>
-
-                <div class="pricing-container" style="margin-top: 3rem;">
-                    <h3>Extend Your Hosting & Maintenance</h3>
-                    <p class="section-subtitle">Keep your site live and up-to-date with a maintenance plan.</p>
-                    <div class="pricing-grid-extended">
-                        <div class="pricing-card">
-                            <h4>1 Month</h4>
-                            <div class="price">$10</div>
-                            <p>For short-term needs</p>
+                    
+                    <div class="addons-container fade-in">
+                        <h4>Extend Your Hosting & Maintenance</h4>
+                        <p>Keep your site live and up-to-date with a maintenance plan.</p>
+                        <div class="maintenance-plans">
+                            <div class="maintenance-plan">
+                                <h5>1 Month</h5>
+                                <div class="plan-price">$10</div>
+                                <p>For short-term needs</p>
+                            </div>
+                            <div class="maintenance-plan">
+                                <h5>3 Months</h5>
+                                <div class="plan-price">$25</div>
+                                <p>Save $5</p>
+                            </div>
+                            <div class="maintenance-plan">
+                                <h5>6 Months</h5>
+                                <div class="plan-price">$45</div>
+                                <p>Save $15</p>
+                            </div>
+                            <div class="maintenance-plan">
+                                <h5>1 Year</h5>
+                                <div class="plan-price">$85</div>
+                                <p>Save $35</p>
+                            </div>
                         </div>
-                        <div class="pricing-card highlight-card">
-                            <h4>3 Months</h4>
-                            <div class="price">$25</div>
-                            <p>Save $5</p>
+                        <div class="maintenance-note">
+                            <p>All maintenance plans include <strong>3 minor updates per month.</strong> Additional updates are $10 each.</p>
                         </div>
-                        <div class="pricing-card">
-                            <h4>6 Months</h4>
-                            <div class="price">$45</div>
-                            <p>Save $15</p>
-                        </div>
-                        <div class="pricing-card">
-                            <h4>1 Year</h4>
-                            <div class="price">$85</div>
-                            <p>Save $35</p>
-                        </div>
-                    </div>
-                    <div class="maintenance-note" style="text-align: center; margin-top: 1.5rem;">
-                        <p>All maintenance plans include **3 minor updates per month.** Additional updates are $10 each.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Video Services Section -->
         <section class="video-services">
             <div class="container">
-                <h2>Need Video Services?</h2>
-                <p class="section-subtitle">Our creative team handles video editing and animation</p>
+                <h2 class="fade-in">Need Video Services?</h2>
+                <p class="section-subtitle fade-in">Our creative team handles video editing and animation</p>
                 
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card fade-in">
                         <div class="service-icon">
                             <i class="fas fa-video"></i>
                         </div>
@@ -146,7 +153,7 @@
                         <p>Professional editing of your footage for promotions, social media, or presentations.</p>
                     </div>
                     
-                    <div class="service-card">
+                    <div class="service-card fade-in">
                         <div class="service-icon">
                             <i class="fas fa-magic"></i>
                         </div>
@@ -154,18 +161,17 @@
                         <p>Simple motion graphics and effects to make your content stand out.</p>
                     </div>
                 </div>
-                 <div style="text-align: center; margin-top: 2rem;">
-                    <p>For all video services, contact us for a personalized quote.</p>
-                </div>
             </div>
         </section>
 
+        <!-- Portfolio Section -->
         <section id="portfolio" class="portfolio-section">
             <div class="container">
-                <h2>Our Recent Work</h2>
-                <p class="section-subtitle">See some of the projects we've launched for our clients.</p>
+                <h2 class="fade-in">Our Recent Work</h2>
+                <p class="section-subtitle fade-in">See some of the projects we've launched for our clients.</p>
                 <div class="portfolio-grid">
-                    <a href="https://biscotti.thechillcreatives.com" target="_blank" class="project-card">
+                    <!-- Portfolio Item 1 -->
+                    <a href="https://biscotti.thechillcreatives.com" target="_blank" class="project-card fade-in">
                         <img src="logos/biscotti.png" alt="Biscotti Project Preview" class="project-image">
                         <div class="project-info">
                             <h3>Biscotti</h3>
@@ -176,21 +182,22 @@
             </div>
         </section>
 
+        <!-- How It Works -->
         <section class="process-section">
             <div class="container">
-                <h2>How It Works</h2>
+                <h2 class="fade-in">How It Works</h2>
                 <div class="process-steps">
-                    <div class="process-step">
+                    <div class="process-step fade-in">
                         <div class="step-number">1</div>
                         <h3>You Order</h3>
-                        <p>Choose your landing page and any add-ons</p>
+                        <p>Choose your landing page options</p>
                     </div>
-                    <div class="process-step">
+                    <div class="process-step fade-in">
                         <div class="step-number">2</div>
                         <h3>We Build</h3>
                         <p>We create your page within 1-3 days</p>
                     </div>
-                    <div class="process-step">
+                    <div class="process-step fade-in">
                         <div class="step-number">3</div>
                         <h3>You Launch</h3>
                         <p>Your page goes live on your subdomain</p>
@@ -199,13 +206,14 @@
             </div>
         </section>
 
+        <!-- CTA Section -->
         <section id="get-started" class="cta-creative">
             <div class="container">
-                <h2>Ready for Your Landing Page?</h2>
-                <p>Get started today and have your page live in a few days</p>
+                <h2 class="fade-in">Ready for Your Landing Page?</h2>
+                <p class="fade-in">Get started today and have your page live soon</p>
                 
                 <div class="cta-button-container">
-                    <a href="order.html" class="cta-button creative-cta large">
+                    <a href="order.html" class="cta-button creative-cta large fade-in">
                         <i class="fas fa-clipboard-list"></i>
                         Order Now
                     </a>
@@ -222,10 +230,15 @@
                     <div class="logo">☁️ The Chill Creatives</div>
                     <p>Simple landing pages for your projects</p>
                 </div>
-                <div class="footer-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                <div class="footer-social">
+                    <h4>Follow Our Journey</h4>
+                    <a href="https://www.instagram.com/thechillcreatives/?utm_source=ig_web_button_share_sheet" 
+                    target="_blank" 
+                    class="instagram-link">
+                        <i class="fab fa-instagram"></i>
+                        <span>@thechillcreatives</span>
+                    </a>
+                    <p class="social-followers">Join our creative community</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -233,5 +246,8 @@
             </div>
         </div>
     </footer>
+
+    <!-- External JavaScript file -->
+    <script src="scripts.js"></script>
 </body>
 </html>
