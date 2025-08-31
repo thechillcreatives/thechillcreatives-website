@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Menu Templates - The Chill Creatives</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+    
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <style>
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: #4a6cf7;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn i {
+            margin-right: 8px;
+        }
+        
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .template-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .template-image {
+            height: 200px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .template-image i {
+            font-size: 64px;
+            color: #4a6cf7;
+        }
+        
+        .template-content {
+            padding: 25px;
+        }
+        
+        .template-content h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: #1e2a78;
+        }
+        
+        .template-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .template-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .template-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4a6cf7;
+            font-weight: bold;
+        }
+        
+        .template-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4a6cf7;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section" style="padding-top: 150px;">
+            <div class="container">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                
+                <div class="section-title">
+                    <h2>QR Menu Templates</h2>
+                    <p>Choose the perfect digital menu solution for your business</p>
+                </div>
+                
+                <div class="templates-grid">
+                    <!-- Simple Menu Template -->
+                    <div class="template-card">
+                        <div class="template-image">
+                            <i class="fas fa-list-alt"></i>
+                        </div>
+                        <div class="template-content">
+                            <h3>Simple Text Menu</h3>
+                            <p>Clean and professional menu without images. Perfect for businesses that want a straightforward digital menu.</p>
+                            
+                            <ul class="template-features">
+                                <li>Clean, text-based design</li>
+                                <li>Category organization</li>
+                                <li>Price display</li>
+                                <li>Easy to update</li>
+                                <li>Fast loading</li>
+                            </ul>
+                            
+                            <div class="template-price">$50</div>
+                            
+                            <div style="text-align: center;">
+                                <a href="index.html#contact" class="btn">Select This Template</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Menu Template -->
+                    <div class="template-card">
+                        <div class="template-image">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <div class="template-content">
+                            <h3>Menu With Images</h3>
+                            <p>Visual menu with product images. Ideal for restaurants and cafes that want to showcase their dishes.</p>
+                            
+                            <ul class="template-features">
+                                <li>High-quality food images</li>
+                                <li>Visual appealing layout</li>
+                                <li>Item descriptions</li>
+                                <li>Category organization</li>
+                                <li>Price display</li>
+                            </ul>
+                            
+                            <div class="template-price">$50</div>
+                            
+                            <div style="text-align: center;">
+                                <a href="index.html#contact" class="btn">Select This Template</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 50px;">
+                    <p>Not sure which template is right for you? <a href="index.html#contact">Contact us</a> for a consultation.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
+    <!-- Simple header and footer inclusion -->
+    <script>
+        // Simple function to include HTML files
+        function includeHTML() {
+            const headerPlaceholder = document.getElementById('header-placeholder');
+            const footerPlaceholder = document.getElementById('footer-placeholder');
+            
+            if (headerPlaceholder) {
+                headerPlaceholder.innerHTML = `
+                    <header>
+                        <div class="container">
+                            <nav>
+                                <a href="index.html" class="logo">
+                                    <img src="icon.png" alt="The Chill Creatives" class="logo-img">
+                                    The Chill Creatives
+                                </a>
+                                <ul class="nav-links">
+                                    <li><a href="#services">Web Services</a></li>
+                                    <li><a href="#video-services">Video Services</a></li>
+                                    <li><a href="#testimonials">Testimonials</a></li>
+                                    <li><a href="#contact">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </header>
+                `;
+            }
+            
+            if (footerPlaceholder) {
+                footerPlaceholder.innerHTML = `
+                    <footer>
+                        <div class="container">
+                            <div class="footer-content">
+                                <div class="footer-column">
+                                    <h3>The Chill Creatives</h3>
+                                    <p>Clients worldwide with fast, affordable web design solutions.</p>
+                                </div>
+                                <div class="footer-column">
+                                    <h3>Contact Info</h3>
+                                    <ul>
+                                        <li><i class="fas fa-envelope"></i> thechillcreatives@gmail.com</li>
+                                        <li><i class="fas fa-globe"></i> Serving clients worldwide</li>
+                                    </ul>
+                                </div>
+                                <div class="footer-column">
+                                    <h3>Follow Us</h3>
+                                    <div class="social-links">
+                                        <a href="https://instagram.com/thechillcreatives" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="copyright">
+                                <p>&copy; 2025 The Chill Creatives. All rights reserved.</p>
+                            </div>
+                        </div>
+                    </footer>
+                `;
+            }
+        }
+
+        // Run when page loads
+        document.addEventListener('DOMContentLoaded', includeHTML);
+    </script>
+</body>
+</html>
