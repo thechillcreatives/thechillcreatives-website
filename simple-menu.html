@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu - The Chill Creatives</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .menu-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px 0;
+        }
+        
+        .restaurant-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #4a6cf7;
+        }
+        
+        .restaurant-name {
+            font-size: 32px;
+            color: #1e2a78;
+            margin-bottom: 5px;
+        }
+        
+        .restaurant-tagline {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .restaurant-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #555;
+        }
+        
+        .menu-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #4a6cf7;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .menu-items {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .menu-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .item-name {
+            font-weight: 600;
+            font-size: 18px;
+            color: #1e2a78;
+        }
+        
+        .item-price {
+            font-weight: 700;
+            color: #4a6cf7;
+            white-space: nowrap;
+        }
+        
+        .item-description {
+            grid-column: 1 / -1;
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .item-tags {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 8px;
+            margin-top: 5px;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: #f0f5ff;
+            color: #4a6cf7;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: #4a6cf7;
+            text-decoration: none;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .menu-container {
+                padding: 20px;
+            }
+            
+            .restaurant-name {
+                font-size: 28px;
+            }
+            
+            .restaurant-info {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .item-name {
+                font-size: 16px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .menu-container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <!-- Restaurant Header -->
+        <div class="restaurant-header">
+            <h1 class="restaurant-name">Restaurant Name</h1>
+            <p class="restaurant-tagline">Delicious food made with love</p>
+            <div class="restaurant-info">
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(123) 456-7890</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>123 Main Street, City</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-globe"></i>
+                    <span>www.restaurantwebsite.com</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Appetizers Section -->
+        <div class="menu-section">
+            <h2 class="section-title">
+                <i class="fas fa-utensils"></i>
+                Appetizers
+            </h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-name">Garlic Bread</div>
+                    <div class="item-price">$5.99</div>
+                    <div class="item-description">Freshly baked bread with garlic butter and herbs</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-name">Mozzarella Sticks</div>
+                    <div class="item-price">$7.99</div>
+                    <div class="item-description">Crispy fried mozzarella with marinara sauce</div>
+                    <div class="item-tags">
+                        <span class="tag">Vegetarian</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-name">Chicken Wings</div>
+                    <div class="item-price">$10.99</div>
+                    <div class="item-description">Crispy chicken wings with your choice of sauce</div>
+                    <div class="item-tags">
+                        <span class="tag">Spicy</span>
+                        <span class="tag">Gluten Free</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Courses Section -->
+        <div class="menu-section">
+            <h2 class="section-title">
+                <i class="fas fa-drumstick-bite"></i>
+                Main Courses
+            </h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-name">Spaghetti Bolognese</div>
+                    <div class="item-price">$14.99</div>
+                    <div class="item-description">Classic pasta with rich meat sauce</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-name">Grilled Salmon</div>
+                    <div class="item-price">$18.99</div>
+                    <div class="item-description">Fresh salmon with lemon butter sauce and vegetables</div>
+                    <div class="item-tags">
+                        <span class="tag">Gluten Free</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-name">Vegetable Stir Fry</div>
+                    <div class="item-price">$12.99</div>
+                    <div class="item-description">Fresh vegetables stir-fried in our special sauce</div>
+                    <div class="item-tags">
+                        <span class="tag">Vegetarian</span>
+                        <span class="tag">Vegan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Desserts Section -->
+        <div class="menu-section">
+            <h2 class="section-title">
+                <i class="fas fa-ice-cream"></i>
+                Desserts
+            </h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-name">Chocolate Cake</div>
+                    <div class="item-price">$7.99</div>
+                    <div class="item-description">Rich chocolate cake with chocolate frosting</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-name">Cheesecake</div>
+                    <div class="item-price">$8.99</div>
+                    <div class="item-description">New York style cheesecake with berry compote</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Beverages Section -->
+        <div class="menu-section">
+            <h2 class="section-title">
+                <i class="fas fa-glass-martini-alt"></i>
+                Beverages
+            </h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-name">Soft Drinks</div>
+                    <div class="item-price">$2.99</div>
+                    <div class="item-description">Coke, Diet Coke, Sprite, Fanta, Dr. Pepper</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-name">Iced Tea</div>
+                    <div class="item-price">$3.49</div>
+                    <div class="item-description">Freshly brewed iced tea, sweetened or unsweetened</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-name">Coffee</div>
+                    <div class="item-price">$2.99</div>
+                    <div class="item-description">Freshly brewed coffee, regular or decaf</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>Powered by <a href="https://thechillcreatives.com/" target="_blank">The Chill Creatives</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- README -->
+ <!-- Features of this template:
+Clean, professional design without images
+
+Fully responsive - works on mobile, tablet, and desktop
+
+Well-organized sections with icons
+
+Dietary tags (Vegetarian, Vegan, Gluten Free, Spicy)
+
+Restaurant information at the top
+
+Print-friendly styling
+
+Customizable colors and styling
+
+How to use:
+Save this as simple-menu.html in your project folder
+
+Customize the restaurant name, contact info, and menu items
+
+For your clients, you would:
+
+Replace the placeholder content with their actual menu
+
+Customize colors to match their branding
+
+Generate a QR code that points to this page
+
+Host it on their subdomain (company.thechillcreatives.com) -->
