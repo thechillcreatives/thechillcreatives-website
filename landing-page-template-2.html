@@ -102,6 +102,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
+            position: relative; /* Needed for positioning the mobile menu */
         }
         
         .logo {
@@ -131,11 +132,23 @@
             color: var(--primary);
         }
         
-        .cart-icon {
+        .cart-icon,
+        .menu-toggle {
             position: relative;
             cursor: pointer;
+            transition: color 0.3s ease;
         }
         
+        .cart-icon i,
+        .menu-toggle i {
+            color: var(--primary-dark);
+        }
+
+        .cart-icon:hover i,
+        .menu-toggle:hover i {
+            color: var(--primary);
+        }
+
         .cart-count {
             position: absolute;
             top: -10px;
@@ -149,6 +162,20 @@
             align-items: center;
             justify-content: center;
             font-size: 12px;
+        }
+        
+        /* Mobile Menu Button & Cart Icon Grouping */
+        .mobile-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Space between cart and hamburger */
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-dark);
         }
         
         /* Hero Section */
@@ -492,7 +519,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
+            overflow: hidden;
             background-color: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
@@ -504,9 +531,18 @@
             border-radius: 10px;
             width: 90%;
             max-width: 600px;
+            max-height: 90vh; /* Set a max height for the modal content */
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             position: relative;
             animation: fadeIn 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modal-body {
+            flex-grow: 1; /* Allow this section to grow */
+            overflow-y: auto; /* Add vertical scrolling */
+            padding-right: 15px; /* Add some space for the scrollbar */
         }
         
         @keyframes fadeIn {
@@ -580,11 +616,56 @@
             padding-top: 15px;
         }
         
+        .checkout-form {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .checkout-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .checkout-form input,
+        .checkout-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        .checkout-note {
+            background-color: #f0f8f0;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #d0e0d0;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+        
+        .checkout-note h3 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+        
+        .whish-number {
+            font-weight: bold;
+            color: var(--primary-dark);
+            font-size: 18px;
+            margin: 10px 0;
+            display: block;
+        }
+        
         .share-buttons {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
+            flex-shrink: 0;
         }
 
         .share-buttons .btn {
@@ -598,10 +679,6 @@
 
         .email-btn {
             background: #D44638;
-        }
-        
-        .instagram-btn {
-            background: #C13584;
         }
         
         .share-buttons .btn:hover {
@@ -623,7 +700,35 @@
         
         @media (max-width: 768px) {
             .nav-links {
+                /* Initially hide the navigation links */
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; /* Position below the header */
+                right: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                /* Show the navigation links when the 'active' class is present */
+                display: flex;
+            }
+
+            .mobile-controls {
+                display: flex; /* Show the cart icon and hamburger menu on mobile */
+                align-items: center;
+            }
+
+            .menu-toggle {
+                display: block; /* Show the hamburger menu icon on mobile */
+            }
+
+            .cart-icon {
+                display: block;
             }
             
             .section {
@@ -646,16 +751,22 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo">GlowSkin</a>
-                <ul class="nav-links">
+                <ul class="nav-links" id="mobileNavLinks">
                     <li><a href="#about">About</a></li>
                     <li><a href="#products">Products</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <!-- <li class="cart-icon" id="openCartBtn">
-                        <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                        <span class="cart-count">0</span>
-                    </li> -->
                 </ul>
+                <div class="mobile-controls">
+                    <div class="cart-icon" id="openCartBtn">
+                        <!-- <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                        <span class="cart-count">0</span> -->
+                    </div>
+                    <!-- Mobile menu toggle button -->
+                    <div class="menu-toggle" id="mobileMenuToggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -665,7 +776,7 @@
         <div class="container">
             <h1>Natural Skincare for Radiant Skin</h1>
             <p>Discover our carefully crafted products made with natural ingredients to nourish and rejuvenate your skin.</p>
-            <!-- <a href="#products" class="btn">Shop Now</a> -->
+            <a href="#products" class="btn">Shop Now</a>
         </div>
     </section>
 
@@ -879,7 +990,7 @@
         <div class="container">
             <h2>Ready for Radiant Skin?</h2>
             <p>Join thousands of customers who have transformed their skincare routine with our natural products</p>
-            <a href="#products" class="btn">Explore the Collection</a>
+            <a href="#products" class="btn">Shop the Collection</a>
         </div>
     </section>
 
@@ -929,15 +1040,39 @@
         <div class="modal-content">
             <span class="modal-close-btn" id="closeCartBtn">&times;</span>
             <h2>Your Cart</h2>
-            <ul class="cart-list" id="cart-list">
-                <!-- Cart items will be dynamically added here -->
-            </ul>
-            <div class="cart-total">
-                Total: $<span id="cart-total-price">0.00</span>
+            
+            <div class="modal-body">
+                <ul class="cart-list" id="cart-list">
+                    <!-- Cart items will be dynamically added here -->
+                </ul>
+                <div class="cart-total">
+                    Total: $<span id="cart-total-price">0.00</span>
+                </div>
+                
+                <div class="checkout-form">
+                    <h3>Customer Details</h3>
+                    <label for="customer-name">Name:</label>
+                    <input type="text" id="customer-name" placeholder="Enter your full name" required>
+
+                    <label for="customer-phone">Phone Number:</label>
+                    <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
+                    
+                    <label for="customer-address">Address:</label>
+                    <textarea id="customer-address" rows="3" placeholder="Enter your delivery address" required></textarea>
+                </div>
+                
+                <div class="checkout-note">
+                    <h3>How to Complete Your Purchase</h3>
+                    <p>To finalize your order, please transfer the **total amount** shown above using **Whish Money**.</p>
+                    <p>Send the payment to the following number:</p>
+                    <span class="whish-number">+96171677808</span>
+                    <p>Once your transfer is complete, send a screenshot of the payment receipt via WhatsApp or email to confirm your order.</p>
+                </div>
             </div>
+            
             <div class="share-buttons">
-                <a href="#" id="whatsapp-share" class="btn whatsapp-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="#" id="email-share" class="btn email-btn"><i class="fas fa-envelope"></i> Email</a>
+                <button id="place-order-whatsapp" class="btn whatsapp-btn"><i class="fab fa-whatsapp"></i> Place Order</button>
+                <button id="place-order-email" class="btn email-btn"><i class="fas fa-envelope"></i> Email Order</button>
             </div>
         </div>
     </div>
@@ -981,15 +1116,18 @@
             });
         });
 
-        // --- New Cart Functionality ---
+        // --- New Cart and Checkout Functionality ---
         const cartModal = document.getElementById('cartModal');
         const openCartBtn = document.getElementById('openCartBtn');
         const closeCartBtn = document.getElementById('closeCartBtn');
         const cartList = document.getElementById('cart-list');
         const cartCount = document.querySelector('.cart-count');
         const cartTotal = document.getElementById('cart-total-price');
-        const whatsappShareBtn = document.getElementById('whatsapp-share');
-        const emailShareBtn = document.getElementById('email-share');
+        const placeOrderWhatsappBtn = document.getElementById('place-order-whatsapp');
+        const placeOrderEmailBtn = document.getElementById('place-order-email');
+        const customerNameInput = document.getElementById('customer-name');
+        const customerPhoneInput = document.getElementById('customer-phone');
+        const customerAddressInput = document.getElementById('customer-address');
         
         let cartItems = [];
 
@@ -1072,36 +1210,68 @@
             }
         });
 
-        // Generate and share the cart content
-        function generateShareMessage() {
+        // Generate and share the cart and customer details
+        function generateOrderMessage() {
+            const name = customerNameInput.value.trim();
+            const phone = customerPhoneInput.value.trim();
+            const address = customerAddressInput.value.trim();
+            
             if (cartItems.length === 0) {
                 return "My shopping cart from GlowSkin is empty. Time to shop!";
             }
+
+            if (!name || !phone || !address) {
+                // Use a visual cue instead of an alert
+                customerNameInput.style.border = '2px solid red';
+                customerPhoneInput.style.border = '2px solid red';
+                customerAddressInput.style.border = '2px solid red';
+                return null;
+            }
             
-            let message = "Check out my GlowSkin shopping cart:\n\n";
+            let message = `**New GlowSkin Order**\n\n`;
+            message += `**Customer Details:**\n`;
+            message += `Name: ${name}\n`;
+            message += `Phone: ${phone}\n`;
+            message += `Address: ${address}\n\n`;
+
+            message += `**Order Items:**\n`;
             let total = 0;
             cartItems.forEach(item => {
-                message += `${item.name} - $${item.price.toFixed(2)}\n`;
+                message += `- ${item.name} - $${item.price.toFixed(2)}\n`;
                 total += item.price;
             });
-            message += `\nTotal: $${total.toFixed(2)}\n\n`;
-            message += "Shop for yourself at glowskin.com!";
+
+            message += `\n**Total:** $${total.toFixed(2)}\n\n`;
+            message += `**Payment Method:** Whish Money\n`;
+            message += `**Please send the payment screenshot to confirm.**`;
             
+            // Encode for URL
             return encodeURIComponent(message);
         }
 
-        whatsappShareBtn.addEventListener('click', (e) => {
+        placeOrderWhatsappBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            const message = generateShareMessage();
-            window.open(`https://wa.me/96171677808?text=${message}`, '_blank');
+            const message = generateOrderMessage();
+            if (message) {
+                window.open(`https://wa.me/96171677808?text=${message}`, '_blank');
+            }
         });
         
-        emailShareBtn.addEventListener('click', (e) => {
+        placeOrderEmailBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            const message = generateShareMessage();
-            window.open(`mailto:thechillcreatives@gmail.com?subject=My GlowSkin Shopping Cart&body=${message}`, '_blank');
+            const message = generateOrderMessage();
+            if (message) {
+                window.open(`mailto:thechillcreatives@gmail.com?subject=New GlowSkin Order from ${customerNameInput.value.trim()}&body=${message}`, '_blank');
+            }
         });
+        
+        // Toggle mobile menu visibility
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileNavLinks = document.getElementById('mobileNavLinks');
 
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileNavLinks.classList.toggle('active');
+        });
     </script>
 </body>
 </html>
