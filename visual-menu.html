@@ -1,456 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Restaurant Menu - The Chill Creatives</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        body {
-            background-color: #1a1a1a;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .menu-container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-        }
-        
-        /* Restaurant Header with Hero Image */
-        .restaurant-hero {
-            height: 250px;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px;
-            position: relative;
-        }
-        
-        .restaurant-name {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-        
-        .restaurant-tagline {
-            font-size: 18px;
-            font-style: italic;
-            margin-bottom: 20px;
-            max-width: 600px;
-        }
-        
-        .restaurant-info {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(74, 108, 247, 0.8);
-            padding: 8px 15px;
-            border-radius: 25px;
-            font-weight: 500;
-        }
-        
-        /* Menu Content */
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: #1a1a1a;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .menu-container {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+      }
+
+      /* Restaurant Header with Hero Image */
+      .restaurant-hero {
+        height: 250px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+      }
+
+      .restaurant-name {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        line-height: 1.2;
+        max-width: 90%;
+      }
+
+      .restaurant-tagline {
+        font-size: 16px;
+        font-style: italic;
+        margin-bottom: 15px;
+        max-width: 90%;
+        line-height: 1.3;
+      }
+
+      .restaurant-info {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+        max-width: 90%;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(74, 108, 247, 0.8);
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      /* Menu Content */
+      .menu-content {
+        padding: 40px;
+      }
+
+      .menu-section {
+        margin-bottom: 50px;
+      }
+
+      .section-title {
+        font-size: 28px;
+        color: #4a6cf7;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f5ff;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .menu-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+      }
+
+      .menu-item {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .menu-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .item-image {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .menu-item:hover .item-image img {
+        transform: scale(1.05);
+      }
+
+      .item-details {
+        padding: 20px;
+      }
+
+      .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+
+      .item-name {
+        font-weight: 700;
+        font-size: 20px;
+        color: #1e2a78;
+        margin-right: 15px;
+      }
+
+      .item-price {
+        font-weight: 700;
+        color: #4a6cf7;
+        font-size: 22px;
+        white-space: nowrap;
+      }
+
+      .item-description {
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .item-tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .tag {
+        background: #f0f5ff;
+        color: #4a6cf7;
+        padding: 4px 10px;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .tag.vegetarian {
+        background: #e7f4e9;
+        color: #2e7d32;
+      }
+
+      .tag.spicy {
+        background: #ffebee;
+        color: #d32f2f;
+      }
+
+      .tag.gluten-free {
+        background: #fff3e0;
+        color: #ef6c00;
+      }
+
+      .tag.vegan {
+        background: #e8f5e9;
+        color: #388e3c;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 30px;
+        background: #f8f9fa;
+        border-top: 1px solid #eee;
+        color: #666;
+      }
+
+      .footer a {
+        color: #4a6cf7;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .footer-logo {
+        font-weight: 700;
+        color: #1e2a78;
+        margin-top: 10px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
         .menu-content {
-            padding: 40px;
+          padding: 25px;
         }
-        
-        .menu-section {
-            margin-bottom: 50px;
+
+        .restaurant-name {
+          font-size: 32px;
         }
-        
-        .section-title {
-            font-size: 28px;
-            color: #4a6cf7;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f5ff;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+
+        .restaurant-info {
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
         }
-        
+
+        .info-item {
+          width: fit-content;
+        }
+
         .menu-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+          grid-template-columns: 1fr;
         }
-        
-        .menu-item {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .section-title {
+          font-size: 24px;
         }
-        
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Print Styles */
+      @media print {
+        body {
+          background: white;
+          padding: 0;
         }
-        
+
+        .menu-container {
+          box-shadow: none;
+        }
+
+        .restaurant-hero {
+          height: auto;
+          color: black;
+          background: white !important;
+          padding: 20px;
+        }
+
         .item-image {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
+          display: none;
         }
-        
-        .item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+      }
+
+      /* Responsive Design for mobile */
+      @media (max-width: 768px) {
+        .restaurant-hero {
+          height: auto;
+          min-height: 200px;
+          padding: 30px 15px;
         }
-        
-        .menu-item:hover .item-image img {
-            transform: scale(1.05);
+
+        .restaurant-name {
+          font-size: 28px;
+          max-width: 100%;
         }
-        
-        .item-details {
-            padding: 20px;
+
+        .restaurant-tagline {
+          font-size: 14px;
+          max-width: 100%;
+          margin-bottom: 15px;
         }
-        
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
+
+        .restaurant-info {
+          flex-direction: column;
+          gap: 8px;
+          align-items: center;
+          max-width: 100%;
         }
-        
+
+        .info-item {
+          width: fit-content;
+          font-size: 12px;
+          padding: 5px 10px;
+        }
+
+        .menu-content {
+          padding: 25px 15px;
+        }
+
+        .section-title {
+          font-size: 22px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .restaurant-name {
+          font-size: 24px;
+        }
+
+        .restaurant-tagline {
+          font-size: 13px;
+        }
+
+        .info-item {
+          font-size: 11px;
+        }
+
+        .section-title {
+          font-size: 20px;
+        }
+
         .item-name {
-            font-weight: 700;
-            font-size: 20px;
-            color: #1e2a78;
-            margin-right: 15px;
+          font-size: 18px;
         }
-        
+
         .item-price {
-            font-weight: 700;
-            color: #4a6cf7;
-            font-size: 22px;
-            white-space: nowrap;
+          font-size: 18px;
         }
-        
-        .item-description {
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        
-        .item-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        
-        .tag {
-            background: #f0f5ff;
-            color: #4a6cf7;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .tag.vegetarian {
-            background: #e7f4e9;
-            color: #2e7d32;
-        }
-        
-        .tag.spicy {
-            background: #ffebee;
-            color: #d32f2f;
-        }
-        
-        .tag.gluten-free {
-            background: #fff3e0;
-            color: #ef6c00;
-        }
-        
-        .tag.vegan {
-            background: #e8f5e9;
-            color: #388e3c;
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px;
-            background: #f8f9fa;
-            border-top: 1px solid #eee;
-            color: #666;
-        }
-        
-        .footer a {
-            color: #4a6cf7;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .footer-logo {
-            font-weight: 700;
-            color: #1e2a78;
-            margin-top: 10px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-content {
-                padding: 25px;
-            }
-            
-            .restaurant-name {
-                font-size: 32px;
-            }
-            
-            .restaurant-info {
-                flex-direction: column;
-                gap: 10px;
-                align-items: center;
-            }
-            
-            .info-item {
-                width: fit-content;
-            }
-            
-            .menu-items {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title {
-                font-size: 24px;
-            }
-        }
-        
-        /* Print Styles */
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            
-            .menu-container {
-                box-shadow: none;
-            }
-            
-            .restaurant-hero {
-                height: auto;
-                color: black;
-                background: white !important;
-                padding: 20px;
-            }
-            
-            .item-image {
-                display: none;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="menu-container">
-        <!-- Restaurant Header with Hero Image -->
-        <div class="restaurant-hero">
-            <h1 class="restaurant-name">Bella Cucina</h1>
-            <p class="restaurant-tagline">Authentic Italian cuisine with a modern twist</p>
-            <div class="restaurant-info">
-                <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <span>(123) 456-7890</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>123 Main Street, City</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-globe"></i>
-                    <span>www.bellacucina.com</span>
-                </div>
-            </div>
+      <!-- Restaurant Header with Hero Image -->
+      <div class="restaurant-hero">
+        <h1 class="restaurant-name">Bella Cucina</h1>
+        <p class="restaurant-tagline">
+          Authentic Italian cuisine with a modern twist
+        </p>
+        <div class="restaurant-info">
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <span>(123) 456-7890</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>123 Main Street, City</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-globe"></i>
+            <span>www.bellacucina.com</span>
+          </div>
         </div>
-        
-        <!-- Menu Content -->
-        <div class="menu-content">
-            <!-- Appetizers Section -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <i class="fas fa-utensils"></i>
-                    Appetizers
-                </h2>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="item-image">
-                            <img src="https://www.nonnabox.com/wp-content/uploads/Garlic-Bread-02-1.jpg" alt="Garlic Bread">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-header">
-                                <div class="item-name">Garlic Bread</div>
-                                <div class="item-price">$5.99</div>
-                            </div>
-                            <div class="item-description">Freshly baked artisan bread topped with garlic butter, parsley, and a blend of Italian cheeses.</div>
-                            <div class="item-tags">
-                                <span class="tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="item-image">
-                            <img src="https://images.themodernproper.com/production/posts/2021/Homemade-Mozzarella-Sticks-9.jpeg?w=960&h=960&q=82&fm=jpg&fit=crop&dm=1638935116&s=e86bcc2aa99e8f8c073f573a6dc4f989" alt="Mozzarella Sticks">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-header">
-                                <div class="item-name">Mozzarella Sticks</div>
-                                <div class="item-price">$7.99</div>
-                            </div>
-                            <div class="item-description">Crispy golden fried mozzarella served with our homemade marinara sauce.</div>
-                            <div class="item-tags">
-                                <span class="tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="item-image">
-                            <img src="https://www.chilitochoc.com/wp-content/uploads/2025/01/hot-honey-chicken-wings-with-sauce-and-chili-flakes.jpg" alt="Chicken Wings">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-header">
-                                <div class="item-name">Chicken Wings</div>
-                                <div class="item-price">$10.99</div>
-                            </div>
-                            <div class="item-description">Crispy chicken wings tossed in your choice of buffalo, BBQ, or teriyaki sauce. Served with celery sticks and blue cheese dressing.</div>
-                            <div class="item-tags">
-                                <span class="tag spicy">Spicy</span>
-                                <span class="tag gluten-free">Gluten Free</span>
-                            </div>
-                        </div>
-                    </div>
+      </div>
+
+      <!-- Menu Content -->
+      <div class="menu-content">
+        <!-- Appetizers Section -->
+        <div class="menu-section">
+          <h2 class="section-title">
+            <i class="fas fa-utensils"></i>
+            Appetizers
+          </h2>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img
+                  src="https://www.nonnabox.com/wp-content/uploads/Garlic-Bread-02-1.jpg"
+                  alt="Garlic Bread"
+                />
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <div class="item-name">Garlic Bread</div>
+                  <div class="item-price">$5.99</div>
                 </div>
-            </div>
-            
-            <!-- Main Courses Section -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <i class="fas fa-drumstick-bite"></i>
-                    Main Courses
-                </h2>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="item-image">
-                            <img src="https://img.chefkoch-cdn.de/rezepte/393031127655461/bilder/1585337/crop-958x539/spaghetti-bolognese.jpg" alt="Spaghetti Bolognese">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-header">
-                                <div class="item-name">Spaghetti Bolognese</div>
-                                <div class="item-price">$14.99</div>
-                            </div>
-                            <div class="item-description">Classic pasta with our slow-cooked meat sauce made from premium beef, tomatoes, and a blend of Italian herbs.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="item-image">
-                            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2FsbW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=80" alt="Grilled Salmon">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-header">
-                                <div class="item-name">Grilled Salmon</div>
-                                <div class="item-price">$18.99</div>
-                            </div>
-                            <div class="item-description">Fresh Atlantic salmon grilled to perfection with lemon butter sauce, served with seasonal vegetables and roasted potatoes.</div>
-                            <div class="item-tags">
-                                <span class="tag gluten-free">Gluten Free</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="item-image">
-                            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHN0aXIlMjBmcnl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=80" alt="Vegetable Stir Fry">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-header">
-                                <div class="item-name">Vegetable Stir Fry</div>
-                                <div class="item-price">$12.99</div>
-                            </div>
-                            <div class="item-description">Fresh seasonal vegetables stir-fried in our special ginger soy sauce, served with jasmine rice.</div>
-                            <div class="item-tags">
-                                <span class="tag vegetarian">Vegetarian</span>
-                                <span class="tag vegan">Vegan</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="item-description">
+                  Freshly baked artisan bread topped with garlic butter,
+                  parsley, and a blend of Italian cheeses.
                 </div>
-            </div>
-            
-            <!-- Desserts Section -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <i class="fas fa-ice-cream"></i>
-                    Desserts
-                </h2>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="item-image">
-                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hvY29sYXRlJTIwY2FrZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Chocolate Cake">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-header">
-                                <div class="item-name">Chocolate Cake</div>
-                                <div class="item-price">$7.99</div>
-                            </div>
-                            <div class="item-description">Rich, moist chocolate cake layered with chocolate ganache and finished with a dark chocolate glaze.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="item-image">
-                            <img src="https://images.unsplash.com/photo-1524351199678-941a58a3df50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hlZXNlY2FrZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Cheesecake">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-header">
-                                <div class="item-name">New York Cheesecake</div>
-                                <div class="item-price">$8.99</div>
-                            </div>
-                            <div class="item-description">Creamy classic cheesecake with a graham cracker crust, topped with your choice of strawberry, blueberry, or raspberry compote.</div>
-                        </div>
-                    </div>
+                <div class="item-tags">
+                  <span class="tag vegetarian">Vegetarian</span>
                 </div>
+              </div>
             </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img
+                  src="https://images.themodernproper.com/production/posts/2021/Homemade-Mozzarella-Sticks-9.jpeg?w=960&h=960&q=82&fm=jpg&fit=crop&dm=1638935116&s=e86bcc2aa99e8f8c073f573a6dc4f989"
+                  alt="Mozzarella Sticks"
+                />
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <div class="item-name">Mozzarella Sticks</div>
+                  <div class="item-price">$7.99</div>
+                </div>
+                <div class="item-description">
+                  Crispy golden fried mozzarella served with our homemade
+                  marinara sauce.
+                </div>
+                <div class="item-tags">
+                  <span class="tag vegetarian">Vegetarian</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img
+                  src="https://www.chilitochoc.com/wp-content/uploads/2025/01/hot-honey-chicken-wings-with-sauce-and-chili-flakes.jpg"
+                  alt="Chicken Wings"
+                />
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <div class="item-name">Chicken Wings</div>
+                  <div class="item-price">$10.99</div>
+                </div>
+                <div class="item-description">
+                  Crispy chicken wings tossed in your choice of buffalo, BBQ, or
+                  teriyaki sauce. Served with celery sticks and blue cheese
+                  dressing.
+                </div>
+                <div class="item-tags">
+                  <span class="tag spicy">Spicy</span>
+                  <span class="tag gluten-free">Gluten Free</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <p class="footer-logo">Powered by <a href="https://thechillcreatives.com/">The Chill Creatives</a></p>
+
+        <!-- Main Courses Section -->
+        <div class="menu-section">
+          <h2 class="section-title">
+            <i class="fas fa-drumstick-bite"></i>
+            Main Courses
+          </h2>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img
+                  src="https://img.chefkoch-cdn.de/rezepte/393031127655461/bilder/1585337/crop-958x539/spaghetti-bolognese.jpg"
+                  alt="Spaghetti Bolognese"
+                />
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <div class="item-name">Spaghetti Bolognese</div>
+                  <div class="item-price">$14.99</div>
+                </div>
+                <div class="item-description">
+                  Classic pasta with our slow-cooked meat sauce made from
+                  premium beef, tomatoes, and a blend of Italian herbs.
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img
+                  src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2FsbW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=80"
+                  alt="Grilled Salmon"
+                />
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <div class="item-name">Grilled Salmon</div>
+                  <div class="item-price">$18.99</div>
+                </div>
+                <div class="item-description">
+                  Fresh Atlantic salmon grilled to perfection with lemon butter
+                  sauce, served with seasonal vegetables and roasted potatoes.
+                </div>
+                <div class="item-tags">
+                  <span class="tag gluten-free">Gluten Free</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img
+                  src="https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHN0aXIlMjBmcnl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=80"
+                  alt="Vegetable Stir Fry"
+                />
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <div class="item-name">Vegetable Stir Fry</div>
+                  <div class="item-price">$12.99</div>
+                </div>
+                <div class="item-description">
+                  Fresh seasonal vegetables stir-fried in our special ginger soy
+                  sauce, served with jasmine rice.
+                </div>
+                <div class="item-tags">
+                  <span class="tag vegetarian">Vegetarian</span>
+                  <span class="tag vegan">Vegan</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Desserts Section -->
+        <div class="menu-section">
+          <h2 class="section-title">
+            <i class="fas fa-ice-cream"></i>
+            Desserts
+          </h2>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img
+                  src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hvY29sYXRlJTIwY2FrZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                  alt="Chocolate Cake"
+                />
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <div class="item-name">Chocolate Cake</div>
+                  <div class="item-price">$7.99</div>
+                </div>
+                <div class="item-description">
+                  Rich, moist chocolate cake layered with chocolate ganache and
+                  finished with a dark chocolate glaze.
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img
+                  src="https://images.unsplash.com/photo-1524351199678-941a58a3df50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hlZXNlY2FrZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                  alt="Cheesecake"
+                />
+              </div>
+              <div class="item-details">
+                <div class="item-header">
+                  <div class="item-name">New York Cheesecake</div>
+                  <div class="item-price">$8.99</div>
+                </div>
+                <div class="item-description">
+                  Creamy classic cheesecake with a graham cracker crust, topped
+                  with your choice of strawberry, blueberry, or raspberry
+                  compote.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p class="footer-logo">
+          Powered by
+          <a href="https://thechillcreatives.com/">The Chill Creatives</a>
+        </p>
+      </div>
     </div>
-</body>
+  </body>
 </html>
