@@ -1,1277 +1,1433 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GlowSkin - Natural Skincare Products</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        :root {
-            --primary: #8db596;
-            --primary-dark: #4a6c5f;
-            --secondary: #f9f5eb;
-            --accent: #d6b0b1;
-            --text: #333;
-            --text-light: #666;
-            --white: #fff;
-        }
-        
-        body {
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--white);
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-        
-        .section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: var(--primary-dark);
-        }
-        
-        .section-title p {
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            position: relative; /* Needed for positioning the mobile menu */
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .cart-icon,
-        .menu-toggle {
-            position: relative;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .cart-icon i,
-        .menu-toggle i {
-            color: var(--primary-dark);
-        }
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
 
-        .cart-icon:hover i,
-        .menu-toggle:hover i {
-            color: var(--primary);
-        }
+      :root {
+        --primary: #8db596;
+        --primary-dark: #4a6c5f;
+        --secondary: #f9f5eb;
+        --accent: #d6b0b1;
+        --text: #333;
+        --text-light: #666;
+        --white: #fff;
+      }
 
-        .cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: var(--accent);
-            color: var(--white);
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
+      body {
+        color: var(--text);
+        line-height: 1.6;
+        background-color: var(--white);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--primary);
+        color: var(--white);
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+      }
+
+      .btn-outline:hover {
+        background: var(--primary);
+        color: var(--white);
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 36px;
+        margin-bottom: 15px;
+        color: var(--primary-dark);
+      }
+
+      .section-title p {
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        position: relative; /* Needed for positioning the mobile menu */
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .cart-icon,
+      .menu-toggle {
+        position: relative;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .cart-icon i,
+      .menu-toggle i {
+        color: var(--primary-dark);
+      }
+
+      .cart-icon:hover i,
+      .menu-toggle:hover i {
+        color: var(--primary);
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: var(--accent);
+        color: var(--white);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+
+      /* Mobile Menu Button & Cart Icon Grouping */
+      .mobile-controls {
+        display: flex;
+        align-items: center;
+        gap: 20px; /* Space between cart and hamburger */
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--primary-dark);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 150px 0 100px;
+        background: linear-gradient(135deg, var(--secondary) 0%, #f5f0e1 100%);
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: var(--primary-dark);
+      }
+
+      .hero p {
+        font-size: 18px;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        color: var(--text-light);
+      }
+
+      /* About Section */
+      .about {
+        background: var(--white);
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-text h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: var(--primary-dark);
+      }
+
+      .about-features {
+        list-style: none;
+        margin: 20px 0;
+      }
+
+      .about-features li {
+        margin-bottom: 10px;
+        padding-left: 30px;
+        position: relative;
+      }
+
+      .about-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      /* Products Section */
+      .products {
+        background: var(--secondary);
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .product-card {
+        background: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .product-image {
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .product-card:hover .product-image img {
+        transform: scale(1.05);
+      }
+
+      .product-details {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .product-name {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: var(--primary-dark);
+      }
+
+      .product-description {
+        color: var(--text-light);
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+
+      .product-price {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 15px;
+      }
+
+      /* Testimonials */
+      .testimonials {
+        background: var(--white);
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .testimonial-card {
+        background: var(--secondary);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .testimonial-text::before {
+        content: "“";
+        font-size: 60px;
+        color: var(--primary);
+        opacity: 0.2;
+        position: absolute;
+        top: -20px;
+        left: -10px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .author-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #ddd;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #777;
+      }
+
+      /* How to Use Section */
+      .usage {
+        background: var(--secondary);
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        text-align: center;
+      }
+
+      .step {
+        padding: 30px;
+      }
+
+      .step-icon {
+        font-size: 40px;
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      .step h3 {
+        margin-bottom: 15px;
+        color: var(--primary-dark);
+      }
+
+      /* FAQ Section */
+      .faq {
+        background: var(--white);
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        background: var(--secondary);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .faq-question {
+        padding: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .faq-answer {
+        padding: 0 20px 20px;
+        color: var(--text-light);
+      }
+
+      /* CTA Section */
+      .cta {
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: var(--white);
+      }
+
+      .cta h2 {
+        margin-bottom: 20px;
+        font-size: 36px;
+      }
+
+      .cta p {
+        max-width: 600px;
+        margin: 0 auto 30px;
+        font-size: 18px;
+        opacity: 0.9;
+      }
+
+      .cta .btn {
+        background: var(--white);
+        color: var(--primary);
+      }
+
+      .cta .btn:hover {
+        background: #f0f0f0;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--primary-dark);
+        color: var(--white);
+        padding: 60px 0 30px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-column a:hover {
+        color: var(--white);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        transition: background 0.3s;
+      }
+
+      .social-links a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ccc;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        padding: 30px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 90vh; /* Set a max height for the modal content */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        animation: fadeIn 0.3s;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-body {
+        flex-grow: 1; /* Allow this section to grow */
+        overflow-y: auto; /* Add vertical scrolling */
+        padding-right: 15px; /* Add some space for the scrollbar */
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
         }
-        
-        /* Mobile Menu Button & Cart Icon Grouping */
-        .mobile-controls {
-            display: flex;
-            align-items: center;
-            gap: 20px; /* Space between cart and hamburger */
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--primary-dark);
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 150px 0 100px;
-            background: linear-gradient(135deg, var(--secondary) 0%, #f5f0e1 100%);
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--primary-dark);
-        }
-        
-        .hero p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: var(--text-light);
-        }
-        
-        /* About Section */
-        .about {
-            background: var(--white);
-        }
-        
+      }
+
+      .modal-close-btn {
+        color: #aaa;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+
+      .modal-close-btn:hover,
+      .modal-close-btn:focus {
+        color: #000;
+      }
+
+      .cart-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+      }
+
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .cart-item-info {
+        flex-grow: 1;
+      }
+
+      .cart-item-name {
+        font-weight: 600;
+        color: var(--primary-dark);
+      }
+
+      .cart-item-price {
+        font-size: 14px;
+        color: var(--text-light);
+      }
+
+      .cart-remove-btn {
+        background: none;
+        border: none;
+        color: var(--accent);
+        font-size: 18px;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+
+      .cart-remove-btn:hover {
+        color: #a33;
+      }
+
+      .cart-total {
+        text-align: right;
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 20px;
+        border-top: 2px solid var(--primary-dark);
+        padding-top: 15px;
+      }
+
+      .checkout-form {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+
+      .checkout-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .checkout-form input,
+      .checkout-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      .checkout-note {
+        background-color: #f0f8f0;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #d0e0d0;
+        margin-top: 20px;
+        line-height: 1.5;
+      }
+
+      .checkout-note h3 {
+        color: var(--primary-dark);
+        margin-bottom: 10px;
+      }
+
+      .whish-number {
+        font-weight: bold;
+        color: var(--primary-dark);
+        font-size: 18px;
+        margin: 10px 0;
+        display: block;
+      }
+
+      .share-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+        flex-shrink: 0;
+      }
+
+      .share-buttons .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+
+      .whatsapp-btn {
+        background: #25d366;
+      }
+
+      .email-btn {
+        background: #d44638;
+      }
+
+      .share-buttons .btn:hover {
+        transform: none;
+        opacity: 0.9;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 968px) {
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+          grid-template-columns: 1fr;
+          text-align: center;
         }
-        
-        .about-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+        .hero h1 {
+          font-size: 36px;
         }
-        
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          /* Initially hide the navigation links */
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100%; /* Position below the header */
+          right: 0;
+          width: 100%;
+          background-color: var(--white);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+          padding: 20px 0;
+          z-index: 999;
+        }
+
+        .nav-links.active {
+          /* Show the navigation links when the 'active' class is present */
+          display: flex;
+        }
+
+        .mobile-controls {
+          display: flex; /* Show the cart icon and hamburger menu on mobile */
+          align-items: center;
+        }
+
+        .menu-toggle {
+          display: block; /* Show the hamburger menu icon on mobile */
+        }
+
+        .cart-icon {
+          display: block;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+
+        .hero h1 {
+          font-size: 32px;
+        }
+
         .about-text h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: var(--primary-dark);
+          font-size: 28px;
         }
-        
-        .about-features {
-            list-style: none;
-            margin: 20px 0;
-        }
-        
-        .about-features li {
-            margin-bottom: 10px;
-            padding-left: 30px;
-            position: relative;
-        }
-        
-        .about-features li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 18px;
-        }
-        
-        /* Products Section */
-        .products {
-            background: var(--secondary);
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .product-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .product-image {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-        
-        .product-details {
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .product-name {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--primary-dark);
-        }
-        
-        .product-description {
-            color: var(--text-light);
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        
-        .product-price {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            background: var(--white);
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .testimonial-card {
-            background: var(--secondary);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .testimonial-text::before {
-            content: "“";
-            font-size: 60px;
-            color: var(--primary);
-            opacity: 0.2;
-            position: absolute;
-            top: -20px;
-            left: -10px;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #ddd;
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: #777;
-        }
-        
-        /* How to Use Section */
-        .usage {
-            background: var(--secondary);
-        }
-        
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-        
-        .step {
-            padding: 30px;
-        }
-        
-        .step-icon {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .step h3 {
-            margin-bottom: 15px;
-            color: var(--primary-dark);
-        }
-        
-        /* FAQ Section */
-        .faq {
-            background: var(--white);
-        }
-        
-        .faq-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            background: var(--secondary);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .faq-question {
-            padding: 20px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .faq-answer {
-            padding: 0 20px 20px;
-            color: var(--text-light);
-        }
-        
-        /* CTA Section */
-        .cta {
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-        }
-        
-        .cta h2 {
-            margin-bottom: 20px;
-            font-size: 36px;
-        }
-        
-        .cta p {
-            max-width: 600px;
-            margin: 0 auto 30px;
-            font-size: 18px;
-            opacity: 0.9;
-        }
-        
-        .cta .btn {
-            background: var(--white);
-            color: var(--primary);
-        }
-        
-        .cta .btn:hover {
-            background: #f0f0f0;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--primary-dark);
-            color: var(--white);
-            padding: 60px 0 30px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column a:hover {
-            color: var(--white);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            transition: background 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ccc;
-        }
-        
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-        }
+      }
 
-        .modal-content {
-            background-color: #fefefe;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 90vh; /* Set a max height for the modal content */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            position: relative;
-            animation: fadeIn 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .modal-body {
-            flex-grow: 1; /* Allow this section to grow */
-            overflow-y: auto; /* Add vertical scrolling */
-            padding-right: 15px; /* Add some space for the scrollbar */
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+      .powered-by {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #ccc;
+      }
 
-        .modal-close-btn {
-            color: #aaa;
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .modal-close-btn:hover,
-        .modal-close-btn:focus {
-            color: #000;
-        }
-
-        .cart-list {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .cart-item-info {
-            flex-grow: 1;
-        }
-        
-        .cart-item-name {
-            font-weight: 600;
-            color: var(--primary-dark);
-        }
-
-        .cart-item-price {
-            font-size: 14px;
-            color: var(--text-light);
-        }
-
-        .cart-remove-btn {
-            background: none;
-            border: none;
-            color: var(--accent);
-            font-size: 18px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .cart-remove-btn:hover {
-            color: #a33;
-        }
-
-        .cart-total {
-            text-align: right;
-            font-size: 20px;
-            font-weight: 700;
-            margin-top: 20px;
-            border-top: 2px solid var(--primary-dark);
-            padding-top: 15px;
-        }
-        
-        .checkout-form {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .checkout-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        
-        .checkout-form input,
-        .checkout-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        
-        .checkout-note {
-            background-color: #f0f8f0;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #d0e0d0;
-            margin-top: 20px;
-            line-height: 1.5;
-        }
-        
-        .checkout-note h3 {
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-        }
-        
-        .whish-number {
-            font-weight: bold;
-            color: var(--primary-dark);
-            font-size: 18px;
-            margin: 10px 0;
-            display: block;
-        }
-        
-        .share-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-            flex-shrink: 0;
-        }
-
-        .share-buttons .btn {
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-        
-        .whatsapp-btn {
-            background: #25D366;
-        }
-
-        .email-btn {
-            background: #D44638;
-        }
-        
-        .share-buttons .btn:hover {
-             transform: none;
-             opacity: 0.9;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                /* Initially hide the navigation links */
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%; /* Position below the header */
-                right: 0;
-                width: 100%;
-                background-color: var(--white);
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                padding: 20px 0;
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                /* Show the navigation links when the 'active' class is present */
-                display: flex;
-            }
-
-            .mobile-controls {
-                display: flex; /* Show the cart icon and hamburger menu on mobile */
-                align-items: center;
-            }
-
-            .menu-toggle {
-                display: block; /* Show the hamburger menu icon on mobile */
-            }
-
-            .cart-icon {
-                display: block;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .about-text h2 {
-                font-size: 28px;
-            }
-        }
+      .powered-by a {
+        color: #4a6cf7;
+        text-decoration: none;
+        font-weight: 600;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">GlowSkin</a>
-                <ul class="nav-links" id="mobileNavLinks">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-                <div class="mobile-controls">
-                    <div class="cart-icon" id="openCartBtn">
-                        <!-- <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      <div class="container">
+        <nav>
+          <a href="#" class="logo">GlowSkin</a>
+          <ul class="nav-links" id="mobileNavLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+          <div class="mobile-controls">
+            <div class="cart-icon" id="openCartBtn">
+              <!-- <a href="#"><i class="fas fa-shopping-cart"></i></a>
                         <span class="cart-count">0</span> -->
-                    </div>
-                    <!-- Mobile menu toggle button -->
-                    <div class="menu-toggle" id="mobileMenuToggle">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                </div>
-            </nav>
-        </div>
+            </div>
+            <!-- Mobile menu toggle button -->
+            <div class="menu-toggle" id="mobileMenuToggle">
+              <i class="fas fa-bars"></i>
+            </div>
+          </div>
+        </nav>
+      </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h1>Natural Skincare for Radiant Skin</h1>
-            <p>Discover our carefully crafted products made with natural ingredients to nourish and rejuvenate your skin.</p>
-            <a href="#products" class="btn">Shop Now</a>
-        </div>
+      <div class="container">
+        <h1>Natural Skincare for Radiant Skin</h1>
+        <p>
+          Discover our carefully crafted products made with natural ingredients
+          to nourish and rejuvenate your skin.
+        </p>
+        <a href="#products" class="btn">Shop Now</a>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Natural Ingredients">
-                </div>
-                <div class="about-text">
-                    <h2>About Our Products</h2>
-                    <p>At GlowSkin, we believe in the power of nature to nurture and heal your skin. Our products are carefully formulated with organic ingredients, free from harsh chemicals and cruelty-free.</p>
-                    <ul class="about-features">
-                        <li>100% Natural Ingredients</li>
-                        <li>Cruelty-Free & Vegan</li>
-                        <li>Environmentally Conscious Packaging</li>
-                        <li>Made in Small Batches for Freshness</li>
-                    </ul>
-                    <a href="#products" class="btn">Explore Products</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+              alt="Natural Ingredients"
+            />
+          </div>
+          <div class="about-text">
+            <h2>About Our Products</h2>
+            <p>
+              At GlowSkin, we believe in the power of nature to nurture and heal
+              your skin. Our products are carefully formulated with organic
+              ingredients, free from harsh chemicals and cruelty-free.
+            </p>
+            <ul class="about-features">
+              <li>100% Natural Ingredients</li>
+              <li>Cruelty-Free & Vegan</li>
+              <li>Environmentally Conscious Packaging</li>
+              <li>Made in Small Batches for Freshness</li>
+            </ul>
+            <a href="#products" class="btn">Explore Products</a>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Products Section -->
     <section id="products" class="section products">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Products</h2>
-                <p>Simple skincare routine with powerful results</p>
-            </div>
-            <div class="products-grid">
-                <div class="product-card" data-product-id="1" data-product-name="Hydrating Face Cream" data-product-price="28.00">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Face Cream">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-name">Hydrating Face Cream</h3>
-                        <p class="product-description">Deeply moisturizing cream with hyaluronic acid and natural oils.</p>
-                        <div class="product-price">$28.00</div>
-                        <!-- <a href="#" class="btn add-to-cart-btn">Add to Cart</a> -->
-                    </div>
-                </div>
-                
-                <div class="product-card" data-product-id="2" data-product-name="Vitamin C Serum" data-product-price="32.00">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Face Serum">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-name">Vitamin C Serum</h3>
-                        <p class="product-description">Brightening serum with Vitamin C to even skin tone and reduce dark spots.</p>
-                        <div class="product-price">$32.00</div>
-                        <!-- <a href="#" class="btn add-to-cart-btn">Add to Cart</a> -->
-                    </div>
-                </div>
-                
-                <div class="product-card" data-product-id="3" data-product-name="Gentle Face Cleanser" data-product-price="22.00">
-                    <div class="product-image">
-                        <img src="https://www.quenchbotanics.com/cdn/shop/files/Gentle-Exfoliation-Cream-Face-Wash-with-Rice-Water-Minerals-100-ML_7152a1fc.jpg?v=1743678551" alt="Face Cleanser">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-name">Gentle Face Cleanser</h3>
-                        <p class="product-description">Soothing cleanser that removes impurities without stripping natural oils.</p>
-                        <div class="product-price">$22.00</div>
-                        <!-- <a href="#" class="btn add-to-cart-btn">Add to Cart</a> -->
-                    </div>
-                </div>
-                
-                <div class="product-card" data-product-id="4" data-product-name="Detox Clay Mask" data-product-price="26.00">
-                    <div class="product-image">
-                        <img src="https://tuelskincare.com/cdn/shop/products/Detox-Clay-Mask_1600x.jpg?v=1651691740" alt="Face Mask">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-name">Detox Clay Mask</h3>
-                        <p class="product-description">Purifying mask with bentonite clay to draw out impurities and minimize pores.</p>
-                        <div class="product-price">$26.00</div>
-                        <!-- <a href="#" class="btn add-to-cart-btn">Add to Cart</a> -->
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Products</h2>
+          <p>Simple skincare routine with powerful results</p>
         </div>
+        <div class="products-grid">
+          <div
+            class="product-card"
+            data-product-id="1"
+            data-product-name="Hydrating Face Cream"
+            data-product-price="28.00"
+          >
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                alt="Face Cream"
+              />
+            </div>
+            <div class="product-details">
+              <h3 class="product-name">Hydrating Face Cream</h3>
+              <p class="product-description">
+                Deeply moisturizing cream with hyaluronic acid and natural oils.
+              </p>
+              <div class="product-price">$28.00</div>
+              <!-- <a href="#" class="btn add-to-cart-btn">Add to Cart</a> -->
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-product-id="2"
+            data-product-name="Vitamin C Serum"
+            data-product-price="32.00"
+          >
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                alt="Face Serum"
+              />
+            </div>
+            <div class="product-details">
+              <h3 class="product-name">Vitamin C Serum</h3>
+              <p class="product-description">
+                Brightening serum with Vitamin C to even skin tone and reduce
+                dark spots.
+              </p>
+              <div class="product-price">$32.00</div>
+              <!-- <a href="#" class="btn add-to-cart-btn">Add to Cart</a> -->
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-product-id="3"
+            data-product-name="Gentle Face Cleanser"
+            data-product-price="22.00"
+          >
+            <div class="product-image">
+              <img
+                src="https://www.quenchbotanics.com/cdn/shop/files/Gentle-Exfoliation-Cream-Face-Wash-with-Rice-Water-Minerals-100-ML_7152a1fc.jpg?v=1743678551"
+                alt="Face Cleanser"
+              />
+            </div>
+            <div class="product-details">
+              <h3 class="product-name">Gentle Face Cleanser</h3>
+              <p class="product-description">
+                Soothing cleanser that removes impurities without stripping
+                natural oils.
+              </p>
+              <div class="product-price">$22.00</div>
+              <!-- <a href="#" class="btn add-to-cart-btn">Add to Cart</a> -->
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-product-id="4"
+            data-product-name="Detox Clay Mask"
+            data-product-price="26.00"
+          >
+            <div class="product-image">
+              <img
+                src="https://tuelskincare.com/cdn/shop/products/Detox-Clay-Mask_1600x.jpg?v=1651691740"
+                alt="Face Mask"
+              />
+            </div>
+            <div class="product-details">
+              <h3 class="product-name">Detox Clay Mask</h3>
+              <p class="product-description">
+                Purifying mask with bentonite clay to draw out impurities and
+                minimize pores.
+              </p>
+              <div class="product-price">$26.00</div>
+              <!-- <a href="#" class="btn add-to-cart-btn">Add to Cart</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="section testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Customer Love</h2>
-                <p>See what our customers are saying about our products</p>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">The Hydrating Face Cream completely transformed my dry skin. It's now my daily essential!</p>
-                    <div class="testimonial-author">
-                        <div class="author-img">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h4>Emma Wilson</h4>
-                            <p>Verified Customer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">I've struggled with sensitive skin for years, but the Gentle Face Cleanser is perfect. No irritation at all!</p>
-                    <div class="testimonial-author">
-                        <div class="author-img">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h4>Sophia Chen</h4>
-                            <p>Verified Customer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">The Vitamin C Serum has noticeably brightened my complexion. I get compliments all the time now!</p>
-                    <div class="testimonial-author">
-                        <div class="author-img">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h4>James Rodriguez</h4>
-                            <p>Verified Customer</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Customer Love</h2>
+          <p>See what our customers are saying about our products</p>
         </div>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              The Hydrating Face Cream completely transformed my dry skin. It's
+              now my daily essential!
+            </p>
+            <div class="testimonial-author">
+              <div class="author-img">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <h4>Emma Wilson</h4>
+                <p>Verified Customer</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              I've struggled with sensitive skin for years, but the Gentle Face
+              Cleanser is perfect. No irritation at all!
+            </p>
+            <div class="testimonial-author">
+              <div class="author-img">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <h4>Sophia Chen</h4>
+                <p>Verified Customer</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              The Vitamin C Serum has noticeably brightened my complexion. I get
+              compliments all the time now!
+            </p>
+            <div class="testimonial-author">
+              <div class="author-img">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <h4>James Rodriguez</h4>
+                <p>Verified Customer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- How to Use Section -->
     <section class="section usage">
-        <div class="container">
-            <div class="section-title">
-                <h2>Simple Skincare Routine</h2>
-                <p>Follow these easy steps for healthy, glowing skin</p>
-            </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-icon">
-                        <i class="fas fa-pump-soap"></i>
-                    </div>
-                    <h3>1. Cleanse</h3>
-                    <p>Start with our Gentle Face Cleanser to remove impurities and prepare your skin.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon">
-                        <i class="fas fa-tint"></i>
-                    </div>
-                    <h3>2. Treat</h3>
-                    <p>Apply Vitamin C Serum to target specific concerns like brightness and even tone.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>3. Moisturize</h3>
-                    <p>Lock in hydration with our Hydrating Face Cream for soft, supple skin.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon">
-                        <i class="fas fa-moon"></i>
-                    </div>
-                    <h3>4. Weekly Treatment</h3>
-                    <p>Use the Detox Clay Mask once a week for deep cleansing and pore refinement.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Simple Skincare Routine</h2>
+          <p>Follow these easy steps for healthy, glowing skin</p>
         </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-icon">
+              <i class="fas fa-pump-soap"></i>
+            </div>
+            <h3>1. Cleanse</h3>
+            <p>
+              Start with our Gentle Face Cleanser to remove impurities and
+              prepare your skin.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-icon">
+              <i class="fas fa-tint"></i>
+            </div>
+            <h3>2. Treat</h3>
+            <p>
+              Apply Vitamin C Serum to target specific concerns like brightness
+              and even tone.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-icon">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <h3>3. Moisturize</h3>
+            <p>
+              Lock in hydration with our Hydrating Face Cream for soft, supple
+              skin.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-icon">
+              <i class="fas fa-moon"></i>
+            </div>
+            <h3>4. Weekly Treatment</h3>
+            <p>
+              Use the Detox Clay Mask once a week for deep cleansing and pore
+              refinement.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- FAQ Section -->
     <section id="faq" class="section faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Find answers to common questions about our skincare products</p>
-            </div>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Are your products suitable for sensitive skin? <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Yes, all our products are formulated with sensitive skin in mind. We use gentle, natural ingredients and avoid common irritants like parabens, sulfates, and synthetic fragrances.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        How long until I see results? <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Most customers notice improvements in their skin within 2-4 weeks of consistent use. For optimal results, we recommend using the products as part of a daily skincare routine.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What is your return policy? <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        We offer a 30-day money-back guarantee. If you're not satisfied with your purchase, you can return it for a full refund within 30 days of delivery.
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+          <p>Find answers to common questions about our skincare products</p>
         </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-question">
+              Are your products suitable for sensitive skin?
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Yes, all our products are formulated with sensitive skin in mind.
+              We use gentle, natural ingredients and avoid common irritants like
+              parabens, sulfates, and synthetic fragrances.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              How long until I see results? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Most customers notice improvements in their skin within 2-4 weeks
+              of consistent use. For optimal results, we recommend using the
+              products as part of a daily skincare routine.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              What is your return policy? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              We offer a 30-day money-back guarantee. If you're not satisfied
+              with your purchase, you can return it for a full refund within 30
+              days of delivery.
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="section cta">
-        <div class="container">
-            <h2>Ready for Radiant Skin?</h2>
-            <p>Join thousands of customers who have transformed their skincare routine with our natural products</p>
-            <a href="#products" class="btn">Shop the Collection</a>
-        </div>
+      <div class="container">
+        <h2>Ready for Radiant Skin?</h2>
+        <p>
+          Join thousands of customers who have transformed their skincare
+          routine with our natural products
+        </p>
+        <a href="#products" class="btn">Shop the Collection</a>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>GlowSkin</h3>
-                    <p>Natural skincare products for radiant, healthy skin.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> hello@glowskin.com</li>
-                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Beauty St, Wellness City</li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Follow Us</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>GlowSkin</h3>
+            <p>Natural skincare products for radiant, healthy skin.</p>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#products">Products</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+              <li><i class="fas fa-envelope"></i> hello@glowskin.com</li>
+              <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 123 Beauty St, Wellness
+                City
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+              <a href="#"><i class="fab fa-tiktok"></i></a>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 GlowSkin. All rights reserved.</p>
-            </div>
+          </div>
         </div>
+        <div class="copyright">
+          <p>&copy; 2023 GlowSkin. All rights reserved.</p>
+          <p class="powered-by">
+            Powered by
+            <a href="https://thechillcreatives.com/" target="_blank"
+              >The Chill Creatives</a
+            >
+          </p>
+        </div>
+      </div>
     </footer>
 
     <!-- Cart Modal -->
     <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close-btn" id="closeCartBtn">&times;</span>
-            <h2>Your Cart</h2>
-            
-            <div class="modal-body">
-                <ul class="cart-list" id="cart-list">
-                    <!-- Cart items will be dynamically added here -->
-                </ul>
-                <div class="cart-total">
-                    Total: $<span id="cart-total-price">0.00</span>
-                </div>
-                
-                <div class="checkout-form">
-                    <h3>Customer Details</h3>
-                    <label for="customer-name">Name:</label>
-                    <input type="text" id="customer-name" placeholder="Enter your full name" required>
+      <div class="modal-content">
+        <span class="modal-close-btn" id="closeCartBtn">&times;</span>
+        <h2>Your Cart</h2>
 
-                    <label for="customer-phone">Phone Number:</label>
-                    <input type="tel" id="customer-phone" placeholder="Enter your phone number" required>
-                    
-                    <label for="customer-address">Address:</label>
-                    <textarea id="customer-address" rows="3" placeholder="Enter your delivery address" required></textarea>
-                </div>
-                
-                <div class="checkout-note">
-                    <h3>How to Complete Your Purchase</h3>
-                    <p>To finalize your order, please transfer the **total amount** shown above using **Whish Money**.</p>
-                    <p>Send the payment to the following number:</p>
-                    <span class="whish-number">+96171677808</span>
-                    <p>Once your transfer is complete, send a screenshot of the payment receipt via WhatsApp or email to confirm your order.</p>
-                </div>
-            </div>
-            
-            <div class="share-buttons">
-                <button id="place-order-whatsapp" class="btn whatsapp-btn"><i class="fab fa-whatsapp"></i> Place Order</button>
-                <button id="place-order-email" class="btn email-btn"><i class="fas fa-envelope"></i> Email Order</button>
-            </div>
+        <div class="modal-body">
+          <ul class="cart-list" id="cart-list">
+            <!-- Cart items will be dynamically added here -->
+          </ul>
+          <div class="cart-total">
+            Total: $<span id="cart-total-price">0.00</span>
+          </div>
+
+          <div class="checkout-form">
+            <h3>Customer Details</h3>
+            <label for="customer-name">Name:</label>
+            <input
+              type="text"
+              id="customer-name"
+              placeholder="Enter your full name"
+              required
+            />
+
+            <label for="customer-phone">Phone Number:</label>
+            <input
+              type="tel"
+              id="customer-phone"
+              placeholder="Enter your phone number"
+              required
+            />
+
+            <label for="customer-address">Address:</label>
+            <textarea
+              id="customer-address"
+              rows="3"
+              placeholder="Enter your delivery address"
+              required
+            ></textarea>
+          </div>
+
+          <div class="checkout-note">
+            <h3>How to Complete Your Purchase</h3>
+            <p>
+              To finalize your order, please transfer the **total amount** shown
+              above using **Whish Money**.
+            </p>
+            <p>Send the payment to the following number:</p>
+            <span class="whish-number">+96171677808</span>
+            <p>
+              Once your transfer is complete, send a screenshot of the payment
+              receipt via WhatsApp or email to confirm your order.
+            </p>
+          </div>
         </div>
+
+        <div class="share-buttons">
+          <button id="place-order-whatsapp" class="btn whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Place Order
+          </button>
+          <button id="place-order-email" class="btn email-btn">
+            <i class="fas fa-envelope"></i> Email Order
+          </button>
+        </div>
+      </div>
     </div>
 
     <script>
-        // Simple JavaScript for header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                header.style.background = '#fff';
-            } else {
-                header.style.boxShadow = 'none';
-                header.style.background = '#fff';
-            }
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+      // Simple JavaScript for header scroll effect
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        if (window.scrollY > 50) {
+          header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+          header.style.background = "#fff";
+        } else {
+          header.style.boxShadow = "none";
+          header.style.background = "#fff";
+        }
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
             });
+          }
         });
-        
-        // Simple FAQ toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-            });
+      });
+
+      // Simple FAQ toggle
+      document.querySelectorAll(".faq-question").forEach((question) => {
+        question.addEventListener("click", () => {
+          const answer = question.nextElementSibling;
+          answer.style.display =
+            answer.style.display === "block" ? "none" : "block";
         });
+      });
 
-        // --- New Cart and Checkout Functionality ---
-        const cartModal = document.getElementById('cartModal');
-        const openCartBtn = document.getElementById('openCartBtn');
-        const closeCartBtn = document.getElementById('closeCartBtn');
-        const cartList = document.getElementById('cart-list');
-        const cartCount = document.querySelector('.cart-count');
-        const cartTotal = document.getElementById('cart-total-price');
-        const placeOrderWhatsappBtn = document.getElementById('place-order-whatsapp');
-        const placeOrderEmailBtn = document.getElementById('place-order-email');
-        const customerNameInput = document.getElementById('customer-name');
-        const customerPhoneInput = document.getElementById('customer-phone');
-        const customerAddressInput = document.getElementById('customer-address');
-        
-        let cartItems = [];
+      // --- New Cart and Checkout Functionality ---
+      const cartModal = document.getElementById("cartModal");
+      const openCartBtn = document.getElementById("openCartBtn");
+      const closeCartBtn = document.getElementById("closeCartBtn");
+      const cartList = document.getElementById("cart-list");
+      const cartCount = document.querySelector(".cart-count");
+      const cartTotal = document.getElementById("cart-total-price");
+      const placeOrderWhatsappBtn = document.getElementById(
+        "place-order-whatsapp"
+      );
+      const placeOrderEmailBtn = document.getElementById("place-order-email");
+      const customerNameInput = document.getElementById("customer-name");
+      const customerPhoneInput = document.getElementById("customer-phone");
+      const customerAddressInput = document.getElementById("customer-address");
 
-        // Function to render the cart items and total price
-        function renderCart() {
-            cartList.innerHTML = '';
-            let total = 0;
-            
-            if (cartItems.length === 0) {
-                cartList.innerHTML = '<p style="text-align: center; color: var(--text-light);">Your cart is empty.</p>';
-            }
+      let cartItems = [];
 
-            cartItems.forEach(item => {
-                const cartItemElement = document.createElement('li');
-                cartItemElement.classList.add('cart-item');
-                cartItemElement.innerHTML = `
+      // Function to render the cart items and total price
+      function renderCart() {
+        cartList.innerHTML = "";
+        let total = 0;
+
+        if (cartItems.length === 0) {
+          cartList.innerHTML =
+            '<p style="text-align: center; color: var(--text-light);">Your cart is empty.</p>';
+        }
+
+        cartItems.forEach((item) => {
+          const cartItemElement = document.createElement("li");
+          cartItemElement.classList.add("cart-item");
+          cartItemElement.innerHTML = `
                     <div class="cart-item-info">
                         <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(
+                          2
+                        )}</div>
                     </div>
-                    <button class="cart-remove-btn" data-product-id="${item.id}">&times;</button>
+                    <button class="cart-remove-btn" data-product-id="${
+                      item.id
+                    }">&times;</button>
                 `;
-                cartList.appendChild(cartItemElement);
-                total += item.price;
-            });
-
-            cartCount.textContent = cartItems.length;
-            cartTotal.textContent = total.toFixed(2);
-        }
-        
-        // Add item to cart
-        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const productCard = e.target.closest('.product-card');
-                const product = {
-                    id: productCard.dataset.productId,
-                    name: productCard.dataset.productName,
-                    price: parseFloat(productCard.dataset.productPrice)
-                };
-                
-                cartItems.push(product);
-                renderCart();
-                
-                // Show added to cart feedback
-                const originalText = button.textContent;
-                button.textContent = 'Added to Cart!';
-                setTimeout(() => {
-                    button.textContent = originalText;
-                }, 1500);
-            });
+          cartList.appendChild(cartItemElement);
+          total += item.price;
         });
 
-        // Remove item from cart
-        cartList.addEventListener('click', (e) => {
-            if (e.target.classList.contains('cart-remove-btn')) {
-                const productId = e.target.dataset.productId;
-                const itemIndex = cartItems.findIndex(item => item.id === productId);
-                if (itemIndex > -1) {
-                    cartItems.splice(itemIndex, 1);
-                    renderCart();
-                }
-            }
-        });
+        cartCount.textContent = cartItems.length;
+        cartTotal.textContent = total.toFixed(2);
+      }
 
-        // Open and close cart modal
-        openCartBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            cartModal.style.display = 'flex';
+      // Add item to cart
+      document.querySelectorAll(".add-to-cart-btn").forEach((button) => {
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+          const productCard = e.target.closest(".product-card");
+          const product = {
+            id: productCard.dataset.productId,
+            name: productCard.dataset.productName,
+            price: parseFloat(productCard.dataset.productPrice),
+          };
+
+          cartItems.push(product);
+          renderCart();
+
+          // Show added to cart feedback
+          const originalText = button.textContent;
+          button.textContent = "Added to Cart!";
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 1500);
+        });
+      });
+
+      // Remove item from cart
+      cartList.addEventListener("click", (e) => {
+        if (e.target.classList.contains("cart-remove-btn")) {
+          const productId = e.target.dataset.productId;
+          const itemIndex = cartItems.findIndex(
+            (item) => item.id === productId
+          );
+          if (itemIndex > -1) {
+            cartItems.splice(itemIndex, 1);
             renderCart();
-        });
+          }
+        }
+      });
 
-        closeCartBtn.addEventListener('click', () => {
-            cartModal.style.display = 'none';
-        });
+      // Open and close cart modal
+      openCartBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        cartModal.style.display = "flex";
+        renderCart();
+      });
 
-        window.addEventListener('click', (e) => {
-            if (e.target === cartModal) {
-                cartModal.style.display = 'none';
-            }
-        });
+      closeCartBtn.addEventListener("click", () => {
+        cartModal.style.display = "none";
+      });
 
-        // Generate and share the cart and customer details
-        function generateOrderMessage() {
-            const name = customerNameInput.value.trim();
-            const phone = customerPhoneInput.value.trim();
-            const address = customerAddressInput.value.trim();
-            
-            if (cartItems.length === 0) {
-                return "My shopping cart from GlowSkin is empty. Time to shop!";
-            }
+      window.addEventListener("click", (e) => {
+        if (e.target === cartModal) {
+          cartModal.style.display = "none";
+        }
+      });
 
-            if (!name || !phone || !address) {
-                // Use a visual cue instead of an alert
-                customerNameInput.style.border = '2px solid red';
-                customerPhoneInput.style.border = '2px solid red';
-                customerAddressInput.style.border = '2px solid red';
-                return null;
-            }
-            
-            let message = `**New GlowSkin Order**\n\n`;
-            message += `**Customer Details:**\n`;
-            message += `Name: ${name}\n`;
-            message += `Phone: ${phone}\n`;
-            message += `Address: ${address}\n\n`;
+      // Generate and share the cart and customer details
+      function generateOrderMessage() {
+        const name = customerNameInput.value.trim();
+        const phone = customerPhoneInput.value.trim();
+        const address = customerAddressInput.value.trim();
 
-            message += `**Order Items:**\n`;
-            let total = 0;
-            cartItems.forEach(item => {
-                message += `- ${item.name} - $${item.price.toFixed(2)}\n`;
-                total += item.price;
-            });
-
-            message += `\n**Total:** $${total.toFixed(2)}\n\n`;
-            message += `**Payment Method:** Whish Money\n`;
-            message += `**Please send the payment screenshot to confirm.**`;
-            
-            // Encode for URL
-            return encodeURIComponent(message);
+        if (cartItems.length === 0) {
+          return "My shopping cart from GlowSkin is empty. Time to shop!";
         }
 
-        placeOrderWhatsappBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const message = generateOrderMessage();
-            if (message) {
-                window.open(`https://wa.me/96171677808?text=${message}`, '_blank');
-            }
-        });
-        
-        placeOrderEmailBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const message = generateOrderMessage();
-            if (message) {
-                window.open(`mailto:thechillcreatives@gmail.com?subject=New GlowSkin Order from ${customerNameInput.value.trim()}&body=${message}`, '_blank');
-            }
-        });
-        
-        // Toggle mobile menu visibility
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileNavLinks = document.getElementById('mobileNavLinks');
+        if (!name || !phone || !address) {
+          // Use a visual cue instead of an alert
+          customerNameInput.style.border = "2px solid red";
+          customerPhoneInput.style.border = "2px solid red";
+          customerAddressInput.style.border = "2px solid red";
+          return null;
+        }
 
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileNavLinks.classList.toggle('active');
+        let message = `**New GlowSkin Order**\n\n`;
+        message += `**Customer Details:**\n`;
+        message += `Name: ${name}\n`;
+        message += `Phone: ${phone}\n`;
+        message += `Address: ${address}\n\n`;
+
+        message += `**Order Items:**\n`;
+        let total = 0;
+        cartItems.forEach((item) => {
+          message += `- ${item.name} - $${item.price.toFixed(2)}\n`;
+          total += item.price;
         });
+
+        message += `\n**Total:** $${total.toFixed(2)}\n\n`;
+        message += `**Payment Method:** Whish Money\n`;
+        message += `**Please send the payment screenshot to confirm.**`;
+
+        // Encode for URL
+        return encodeURIComponent(message);
+      }
+
+      placeOrderWhatsappBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const message = generateOrderMessage();
+        if (message) {
+          window.open(`https://wa.me/96171677808?text=${message}`, "_blank");
+        }
+      });
+
+      placeOrderEmailBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const message = generateOrderMessage();
+        if (message) {
+          window.open(
+            `mailto:thechillcreatives@gmail.com?subject=New GlowSkin Order from ${customerNameInput.value.trim()}&body=${message}`,
+            "_blank"
+          );
+        }
+      });
+
+      // Toggle mobile menu visibility
+      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+      const mobileNavLinks = document.getElementById("mobileNavLinks");
+
+      mobileMenuToggle.addEventListener("click", () => {
+        mobileNavLinks.classList.toggle("active");
+      });
     </script>
-</body>
+  </body>
 </html>

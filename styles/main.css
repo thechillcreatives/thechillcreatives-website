@@ -477,3 +477,49 @@ footer {
         .video-cta a:hover {
             text-decoration: underline;
         }
+
+
+        .service-card.popular {
+    /* Existing styles */
+    border: 2px solid #4a6cf7;
+    transform: scale(1.05);
+    
+    /* Add this transition for a smooth hover effect */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+/* Add a hover effect for the card itself */
+.service-card.popular:hover {
+    transform: scale(1.08) translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-card.popular::before {
+    content: "MOST POPULAR";
+    position: absolute;
+    top: 30px;
+    right: -40px;
+    
+    /* Updated styles for better visibility and a more refined look */
+    background: #f7556a; /* A more vibrant red */
+    color: white;
+    padding: 5px 30px;
+    font-size: 13px; /* Slightly larger font */
+    font-weight: 700; /* Bolder font weight for better readability */
+    letter-spacing: 1px;
+    transform: rotate(45deg);
+    
+    /* Add a subtle shadow for depth */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Add this to create a clean, angled cut on the ribbon */
+.service-card.popular::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -30px;
+    border-style: solid;
+    border-width: 0 20px 20px 0; /* Creates a clean, folded triangle */
+    border-color: transparent #e23d51 transparent transparent; /* Matches the ribbon's color but darker */
+}
