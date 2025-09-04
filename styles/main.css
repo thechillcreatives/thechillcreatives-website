@@ -416,3 +416,64 @@ footer {
         transform: scale(1);
     }
 }
+
+/* Availability Notice */
+        .availability-notice {
+            background: #fff8e6;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .availability-notice i {
+            color: #ffc107;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .availability-notice p {
+            margin: 0;
+            color: #856404;
+        }
+
+        .availability-notice a {
+            color: #4a6cf7;
+            font-weight: 600;
+        }
+
+        /* Availability Tag */
+        .availability-tag {
+            background: #fff3cd;
+            color: #856404;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 15px 0;
+        }
+
+        /* Video Services CTA */
+        .video-cta {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #f5f7ff;
+            border-radius: 10px;
+        }
+
+        .video-cta a {
+            color: #4a6cf7;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .video-cta a:hover {
+            text-decoration: underline;
+        }
