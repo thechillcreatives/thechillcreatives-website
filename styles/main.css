@@ -21,7 +21,7 @@ body {
 
 .btn {
     display: inline-block;
-    background: #4994F0;
+    background: #4a6cf7;
     color: white;
     padding: 12px 24px;
     border-radius: 5px;
@@ -108,11 +108,11 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #4994F0;
+    color: #4a6cf7;
 }
 
 .logo:hover {
-    color: #4994F0;
+    color: #4a6cf7;
 }
 
 /* Hero Section */
@@ -158,7 +158,7 @@ nav {
 }
 
 .service-card.popular {
-    border: 2px solid #4994F0;
+    border: 2px solid #4a6cf7;
     transform: scale(1.05);
 }
 
@@ -167,7 +167,7 @@ nav {
     position: absolute;
     top: 15px;
     right: -30px;
-    background: #4994F0;
+    background: #4a6cf7;
     color: white;
     padding: 5px 30px;
     font-size: 12px;
@@ -177,7 +177,7 @@ nav {
 
 .service-icon {
     font-size: 40px;
-    color: #4994F0;
+    color: #4a6cf7;
     margin-bottom: 20px;
 }
 
@@ -189,7 +189,7 @@ nav {
 .price {
     font-size: 32px;
     font-weight: 700;
-    color: #4994F0;
+    color: #4a6cf7;
     margin: 20px 0;
 }
 
@@ -209,7 +209,7 @@ nav {
     content: "✓";
     position: absolute;
     left: 0;
-    color: #4994F0;
+    color: #4a6cf7;
     font-weight: bold;
 }
 
@@ -236,7 +236,7 @@ nav {
 
 .domain-icon {
     font-size: 40px;
-    color: #4994F0;
+    color: #4a6cf7;
     margin-bottom: 20px;
 }
 
@@ -253,7 +253,7 @@ nav {
     font-family: monospace;
     font-weight: bold;
     margin: 15px 0;
-    color: #4994F0;
+    color: #4a6cf7;
 }
 
 .note {
@@ -306,7 +306,7 @@ nav {
 /* CTA Section */
 .cta {
     text-align: center;
-    background-color: #4994F0;
+    background-color: #4a6cf7;
     color: white;
 }
 
@@ -323,7 +323,7 @@ nav {
 
 .cta .btn {
     background: white;
-    color: #4994F0;
+    color: #4a6cf7;
 }
 
 .cta .btn:hover {
@@ -443,7 +443,7 @@ footer {
         }
 
         .availability-notice a {
-            color: #4994F0;
+            color: #4a6cf7;
             font-weight: 600;
         }
 
@@ -469,7 +469,7 @@ footer {
         }
 
         .video-cta a {
-            color: #4994F0;
+            color: #4a6cf7;
             font-weight: 600;
             text-decoration: none;
         }
@@ -481,7 +481,7 @@ footer {
 
         .service-card.popular {
     /* Existing styles */
-    border: 2px solid #4994F0;
+    border: 2px solid #4a6cf7;
     transform: scale(1.05);
     
     /* Add this transition for a smooth hover effect */
