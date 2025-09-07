@@ -21,7 +21,7 @@ body {
 
 .btn {
     display: inline-block;
-    background: #4a6cf7;
+    background: #4994F0;
     color: white;
     padding: 12px 24px;
     border-radius: 5px;
@@ -87,7 +87,7 @@ nav {
 }
 
 .logo-img {
-    height: 40px;
+    height: 60px;
     width: auto;
 }
 
@@ -108,11 +108,11 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #4a6cf7;
+    color: #4994F0;
 }
 
 .logo:hover {
-    color: #4a6cf7;
+    color: #4994F0;
 }
 
 /* Hero Section */
@@ -158,7 +158,7 @@ nav {
 }
 
 .service-card.popular {
-    border: 2px solid #4a6cf7;
+    border: 2px solid #4994F0;
     transform: scale(1.05);
 }
 
@@ -167,7 +167,7 @@ nav {
     position: absolute;
     top: 15px;
     right: -30px;
-    background: #4a6cf7;
+    background: #4994F0;
     color: white;
     padding: 5px 30px;
     font-size: 12px;
@@ -177,7 +177,7 @@ nav {
 
 .service-icon {
     font-size: 40px;
-    color: #4a6cf7;
+    color: #4994F0;
     margin-bottom: 20px;
 }
 
@@ -189,7 +189,7 @@ nav {
 .price {
     font-size: 32px;
     font-weight: 700;
-    color: #4a6cf7;
+    color: #4994F0;
     margin: 20px 0;
 }
 
@@ -209,7 +209,7 @@ nav {
     content: "✓";
     position: absolute;
     left: 0;
-    color: #4a6cf7;
+    color: #4994F0;
     font-weight: bold;
 }
 
@@ -236,7 +236,7 @@ nav {
 
 .domain-icon {
     font-size: 40px;
-    color: #4a6cf7;
+    color: #4994F0;
     margin-bottom: 20px;
 }
 
@@ -253,7 +253,7 @@ nav {
     font-family: monospace;
     font-weight: bold;
     margin: 15px 0;
-    color: #4a6cf7;
+    color: #4994F0;
 }
 
 .note {
@@ -306,7 +306,7 @@ nav {
 /* CTA Section */
 .cta {
     text-align: center;
-    background-color: #4a6cf7;
+    background-color: #4994F0;
     color: white;
 }
 
@@ -323,7 +323,7 @@ nav {
 
 .cta .btn {
     background: white;
-    color: #4a6cf7;
+    color: #4994F0;
 }
 
 .cta .btn:hover {
@@ -443,7 +443,7 @@ footer {
         }
 
         .availability-notice a {
-            color: #4a6cf7;
+            color: #4994F0;
             font-weight: 600;
         }
 
@@ -469,7 +469,7 @@ footer {
         }
 
         .video-cta a {
-            color: #4a6cf7;
+            color: #4994F0;
             font-weight: 600;
             text-decoration: none;
         }
@@ -481,7 +481,7 @@ footer {
 
         .service-card.popular {
     /* Existing styles */
-    border: 2px solid #4a6cf7;
+    border: 2px solid #4994F0;
     transform: scale(1.05);
     
     /* Add this transition for a smooth hover effect */
@@ -522,4 +522,54 @@ footer {
     border-style: solid;
     border-width: 0 20px 20px 0; /* Creates a clean, folded triangle */
     border-color: transparent #e23d51 transparent transparent; /* Matches the ribbon's color but darker */
+}
+
+.logo-text {
+    margin-left: 30px; /* Adjust this value for more or less space */
+}
+
+/* Add this new CSS for the hamburger menu */
+.hamburger-menu {
+    display: none; /* Hide by default on large screens */
+    font-size: 24px;
+    color: #1e2a78;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block; /* Show the hamburger button on mobile */
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: white;
+        position: absolute;
+        top: 80px; /* Position it below the header */
+        right: 0;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-100%);
+    }
+
+    .nav-links.active {
+        display: flex; /* Show the menu when the .active class is added */
+        transform: translateY(0);
+    }
+
+    .nav-links li {
+        margin: 0;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
 }
