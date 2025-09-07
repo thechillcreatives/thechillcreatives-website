@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Grind - Interactive Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2xge2gXUUPg6s/y0T8D4T+n0w1f6+93+A9T50Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Chosen Palette: Warm Neutral -->
+    <!-- Application Structure Plan: The application is designed as a single-page, filterable menu. A top-level navigation bar with buttons for 'All', 'Coffee', 'Non-Coffee', and 'Bites' allows users to instantly filter the content. Menu items are now grouped by subcategory (e.g., 'Espresso & Milk', 'Signature Sips') into distinct sections. This new structure provides a more organized and scannable visual hierarchy, allowing users to find items more intuitively than a single, flat grid. Filters now show/hide entire subcategory sections for improved performance and clarity. -->
+    <!-- Visualization & Content Choices: 
+    - Menu Items: Report Info -> Goal: Organize/Inform -> Presentation: Grid of styled HTML cards with images, grouped by subcategory -> Interaction: Filtered visibility of subcategory sections via category buttons -> Justification: Breaks the menu into logical, digestible chunks, enhancing scannability and visual organization. Method: Tailwind CSS.
+    - Menu Categories: Report Info -> Goal: Navigation -> Presentation: Row of HTML buttons -> Interaction: Click events trigger JS logic to show/hide subcategory sections -> Justification: An intuitive and standard UI pattern for content filtering that now works at a higher level of information architecture. Method: JS + Tailwind CSS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #4A4A4A;
+        }
+        .active-filter {
+            background-color: #A37F64 !important;
+            color: #FFFFFF !important;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#6B4F40]">The Daily Grind</h1>
+            <p class="text-lg text-gray-500 italic mt-2">Sleek. Simple. Sustainable.</p>
+        </header>
+
+        <main>
+            <section id="menu-section" class="mb-12">
+                <div class="max-w-3xl mx-auto mb-8 text-center">
+                    <p class="text-gray-600">
+                        Welcome to our interactive menu. Use the filters below to explore our curated selection of beverages and bites. Whether you're in the mood for our signature house blend coffee, a refreshing elixir, or a delicious snack, you'll find it right here.
+                    </p>
+                </div>
+                <div id="filters" class="sticky top-0 z-10 bg-[#FDFBF8] flex justify-center flex-wrap gap-2 md:gap-4 mb-8 py-4 -mx-4 sm:mx-0 shadow-md">
+                    <button class="filter-btn active-filter px-4 py-2 text-sm md:text-base font-medium rounded-full bg-white text-gray-700 shadow-sm hover:bg-gray-100 transition-colors" data-category="all">All</button>
+                    <button class="filter-btn px-4 py-2 text-sm md:text-base font-medium rounded-full bg-white text-gray-700 shadow-sm hover:bg-gray-100 transition-colors" data-category="coffee">Coffee</button>
+                    <button class="filter-btn px-4 py-2 text-sm md:text-base font-medium rounded-full bg-white text-gray-700 shadow-sm hover:bg-gray-100 transition-colors" data-category="non-coffee">Non-Coffee</button>
+                    <button class="filter-btn px-4 py-2 text-sm md:text-base font-medium rounded-full bg-white text-gray-700 shadow-sm hover:bg-gray-100 transition-colors" data-category="bites">Bites</button>
+                </div>
+
+                <div id="menu-container">
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-200">
+            <p class="text-gray-600 font-semibold mb-2">Milk Options Available</p>
+            <p class="text-gray-500">Oat, Almond, Soy, Coconut, Whole Milk</p>
+            <div class="mt-8 flex flex-col md:flex-row justify-center items-center gap-4 text-gray-600 text-sm">
+                <p>123 Coffee Lane, Cityville</p>
+                <p>Mon - Fri: 7am - 6pm</p>
+                <p>Sat - Sun: 8am - 5pm</p>
+            </div>
+            <div class="mt-4 flex flex-col md:flex-row justify-center items-center gap-4 text-gray-600 text-sm">
+                <p><i class="fa-solid fa-phone mr-2"></i>(555) 123-4567</p>
+                <p><i class="fa-solid fa-envelope mr-2"></i>hello@thedailygrind.com</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-[#A37F64]"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-[#A37F64]"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-[#A37F64]"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        const menuData = [
+            { name: "Espresso", description: "A bold, rich shot.", price: 3.00, category: "coffee", subcategory: "Espresso & Milk", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Espresso" },
+            { name: "Americano", description: "Espresso with hot water.", price: 3.50, category: "coffee", subcategory: "Espresso & Milk", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Americano" },
+            { name: "Cortado", description: "Equal parts espresso and steamed milk.", price: 4.00, category: "coffee", subcategory: "Espresso & Milk", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Cortado" },
+            { name: "Latte", description: "Smooth espresso with steamed milk and a thin layer of foam.", price: 5.00, category: "coffee", subcategory: "Espresso & Milk", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Latte" },
+            { name: "Cappuccino", description: "Espresso with a thick, velvety layer of foam.", price: 5.00, category: "coffee", subcategory: "Espresso & Milk", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Cappuccino" },
+            { name: "Flat White", description: "A velvety microfoam coffee.", price: 5.00, category: "coffee", subcategory: "Espresso & Milk", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Flat+White" },
+            { name: "Mocha", description: "Rich dark chocolate, espresso, and steamed milk.", price: 5.50, category: "coffee", subcategory: "Espresso & Milk", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Mocha" },
+            { name: "Morning Ritual", description: "Brown sugar, cinnamon, and a hint of vanilla bean latte.", price: 6.00, category: "coffee", subcategory: "Signature Sips", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Morning+Ritual" },
+            { name: "The Golden Hour", description: "A turmeric, ginger, and honey latte with a shot of espresso.", price: 6.50, category: "coffee", subcategory: "Signature Sips", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=The+Golden+Hour" },
+            { name: "Forest Walk", description: "A cardamom and maple syrup latte, topped with a dash of smoked salt.", price: 6.50, category: "coffee", subcategory: "Signature Sips", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Forest+Walk" },
+            { name: "Ethiopian Yirgacheffe", description: "Bright, floral notes with a light body.", price: 6.00, category: "coffee", subcategory: "Pour-Over", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Yirgacheffe" },
+            { name: "Colombian Supremo", description: "Balanced, with a nutty aroma and sweet finish.", price: 6.00, category: "coffee", subcategory: "Pour-Over", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Supremo" },
+            { name: "Classic Matcha Latte", description: "Ceremonial grade matcha with your choice of milk.", price: 5.50, category: "non-coffee", subcategory: "Teas & Elixirs", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Matcha+Latte" },
+            { name: "Spiced Chai Latte", description: "A warm blend of black tea, cinnamon, and clove.", price: 5.50, category: "non-coffee", subcategory: "Teas & Elixirs", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Chai+Latte" },
+            { name: "Charcoal Rose Latte", description: "Activated charcoal and rose water steamed with milk.", price: 6.00, category: "non-coffee", subcategory: "Teas & Elixirs", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Charcoal+Rose" },
+            { name: "Herbal Brews", description: "Chamomile, Peppermint, Green Tea, Earl Grey.", price: 4.00, category: "non-coffee", subcategory: "Teas & Elixirs", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Herbal+Brews" },
+            { name: "House-Made Iced Tea", description: "A light, refreshing black iced tea.", price: 4.00, category: "non-coffee", subcategory: "Refreshments", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Iced+Tea" },
+            { name: "Sparkling Ginger Limeade", description: "Zesty and bubbly, with fresh ginger and lime.", price: 5.00, category: "non-coffee", subcategory: "Refreshments", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Ginger+Limeade" },
+            { name: "Cold Brew", description: "Steeped for 24 hours for a smooth, low-acid coffee.", price: 5.00, category: "non-coffee", subcategory: "Refreshments", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Cold+Brew" },
+            { name: "Avocado Toast", description: "Smashed avocado on sourdough with chili flakes and everything bagel seasoning.", price: 8.00, category: "bites", subcategory: "All-Day Toast", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Avocado+Toast" },
+            { name: "Ricotta & Berry Toast", description: "Toasted sourdough topped with creamy ricotta, fresh seasonal berries, and a drizzle of honey.", price: 9.00, category: "bites", subcategory: "All-Day Toast", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Ricotta+Toast" },
+            { name: "Berry Bowl", description: "Greek yogurt or chia pudding base with mixed berries, granola, and toasted coconut flakes.", price: 9.00, category: "bites", subcategory: "Bowls", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Berry+Bowl" },
+            { name: "Green Power Bowl", description: "A vibrant mix of quinoa, spinach, avocado, chickpeas, and lemon vinaigrette.", price: 10.00, category: "bites", subcategory: "Bowls", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Green+Power+Bowl" },
+            { name: "Croissant", description: "Classic butter croissant.", price: 3.50, category: "bites", subcategory: "Baked Goods", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Croissant" },
+            { name: "Chocolate Croissant", description: "Flaky pastry with rich chocolate.", price: 4.00, category: "bites", subcategory: "Baked Goods", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Chocolate+Croissant" },
+            { name: "Blueberry Scone", description: "A light, buttery scone with fresh blueberries.", price: 3.50, category: "bites", subcategory: "Baked Goods", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Blueberry+Scone" },
+            { name: "Gluten-Free Brownie", description: "Rich and fudgy.", price: 4.00, category: "bites", subcategory: "Baked Goods", image: "https://placehold.co/600x400/FDFBF8/6B4F40?text=Brownie" }
+        ];
+
+        const menuContainer = document.getElementById('menu-container');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        const renderMenu = (items) => {
+            menuContainer.innerHTML = '';
+            const groupedItems = items.reduce((acc, item) => {
+                const subcategory = item.subcategory;
+                if (!acc[subcategory]) {
+                    acc[subcategory] = {
+                        category: item.category,
+                        items: []
+                    };
+                }
+                acc[subcategory].items.push(item);
+                return acc;
+            }, {});
+
+            for (const subcategory in groupedItems) {
+                const group = groupedItems[subcategory];
+                const section = document.createElement('div');
+                section.className = 'subcategory-section mb-12';
+                section.dataset.category = group.category;
+                section.innerHTML = `
+                    <h2 class="text-2xl md:text-3xl font-semibold text-[#6B4F40] mb-6 border-b-2 border-gray-200 pb-2">${subcategory}</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                `;
+                const grid = section.querySelector('.grid');
+
+                group.items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-white rounded-xl shadow-lg transition-transform transform hover:scale-105 overflow-hidden';
+                    card.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-lg font-semibold text-gray-800">${item.name}</h3>
+                                <p class="text-lg font-semibold text-[#A37F64]">$${item.price.toFixed(2)}</p>
+                            </div>
+                            <p class="text-gray-500 text-sm">${item.description}</p>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+                menuContainer.appendChild(section);
+            }
+        };
+
+        const handleFilterClick = (e) => {
+            const category = e.target.dataset.category;
+            const sections = document.querySelectorAll('.subcategory-section');
+
+            filterBtns.forEach(btn => btn.classList.remove('active-filter'));
+            e.target.classList.add('active-filter');
+
+            sections.forEach(section => {
+                if (category === 'all' || section.dataset.category === category) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        };
+
+        filterBtns.forEach(btn => btn.addEventListener('click', handleFilterClick));
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu(menuData);
+        });
+    </script>
+</body>
+</html>
