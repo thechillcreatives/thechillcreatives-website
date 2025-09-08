@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "http://www.thechillcreatives.com/*"
+  to = "https://thechillcreatives.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.thechillcreatives.com/*"
+  to = "https://thechillcreatives.com/:splat"
+  status = 301
+  force = true
