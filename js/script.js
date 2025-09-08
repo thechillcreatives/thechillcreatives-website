@@ -38,7 +38,7 @@ function includeHTML() {
                         <div class="footer-column">
                             <h3>Contact Info</h3>
                             <ul>
-                                <li><i class="fas fa-envelope"></i> thechillcreatives@gmail.com</li>
+                                <li><i class="fas fa-envelope"></i> contact@thechillcreatives.com</li>
                                 <li><i class="fas fa-globe"></i> Serving clients worldwide</li>
                             </ul>
                         </div>
