@@ -38,7 +38,8 @@ function includeHTML() {
                         <div class="footer-column">
                             <h3>Contact Info</h3>
                             <ul>
-                                <li><i class="fas fa-envelope"></i> contact@thechillcreatives.com</li>
+                                <li><i class="fas fa-envelope"></i> <a href="mailto:contact@thechillcreatives.com">contact@thechillcreatives.com</a></li>
+                                <li><i class="fas fa-phone"></i> <a href="tel:+96171614890">+961 71 614 890</a></li>
                                 <li><i class="fas fa-globe"></i> Serving clients worldwide</li>
                             </ul>
                         </div>
