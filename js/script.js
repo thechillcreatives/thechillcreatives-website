@@ -33,7 +33,7 @@ function includeHTML() {
                     <div class="footer-content">
                         <div class="footer-column">
                             <h3>The Chill Creatives</h3>
-                            <p>Clients worldwide with fast, affordable web design solutions.</p>
+                            <p>Clients worldwide with fast, affordable web development solutions.</p>
                         </div>
                         <div class="footer-column">
                             <h3>Contact Info</h3>
