@@ -134,7 +134,7 @@
             <div class="fixed inset-0 bg-black bg-opacity-50" onclick="closeModal()"></div>
             
             <!-- Modal content container. I've added mx-4 for better spacing on mobile. -->
-            <div class="relative bg-white rounded-xl w-full sm:max-w-2xl lg:max-w-3xl mx-4 p-6 sm:p-8 shadow-2xl transform transition-transform duration-300 scale-95" id="modal-content-wrapper">
+            <div class="relative bg-white rounded-xl w-full sm:max-w-2xl lg:max-w-3xl mx-4 p-6 sm:p-8 shadow-2xl transform transition-transform duration-300 scale-95 max-h-[90vh] overflow-y-auto" id="modal-content-wrapper">
                 <!-- Close button for the modal. -->
                 <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -383,14 +383,14 @@
                 }).join('');
 
                 card.innerHTML = `
-                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-                        <img src="${item.imageUrl}" alt="${item.name}" class="w-32 h-32 sm:w-24 sm:h-24 object-cover rounded-lg mb-2 sm:mb-0">
-                        <div class="flex-grow">
+                    <div class="flex flex-col items-start gap-4">
+                        <img src="${item.imageUrl}" alt="${item.name}" class="w-full h-40 object-cover rounded-lg">
+                        <div class="flex-grow w-full">
                             <div class="flex justify-between items-start mb-1">
                                 <h3 class="text-xl font-semibold leading-tight">${item.name}</h3>
                                 <p class="text-2xl font-bold text-gray-700 ml-4">$${item.price}</p>
                             </div>
-                            <p class="text-gray-500 text-sm">${item.description}</p>
+                            <p class="text-gray-500 text-sm overflow-hidden text-ellipsis whitespace-nowrap">${item.description}</p>
                             <div class="flex flex-wrap gap-2 mt-2">
                                 ${tagsHtml}
                             </div>
