@@ -381,12 +381,14 @@
 
                 card.innerHTML = `
                     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-                        <!-- Updated: Fixed height for consistent images in the menu cards. -->
                         <img src="${item.imageUrl}" alt="${item.name}" class="object-cover rounded-lg flex-shrink-0 w-full h-40 sm:w-40 sm:h-40">
                         <div class="flex-grow w-full">
-                            <div class="flex flex-col sm:flex-row justify-between items-start mb-1">
-                                <h3 class="text-lg sm:text-xl font-semibold leading-tight">${item.name}</h3>
-                                <p class="text-xl sm:text-2xl font-bold text-gray-700 sm:ml-4">$${item.price}</p>
+                            <!-- UPDATED: Replaced the grid layout with a flex column layout to ensure the price stacks below the name. -->
+                            <div class="flex flex-col mb-1">
+                                <!-- Name is now a block element. -->
+                                <h3 class="text-lg sm:text-xl font-semibold leading-tight mb-1">${item.name}</h3>
+                                <!-- Price is now a block element directly below the name. -->
+                                <p class="text-xl sm:text-2xl font-bold text-gray-700">$${item.price}</p>
                             </div>
                             <p class="text-xs sm:text-sm text-gray-500">${item.description}</p>
                             <div class="flex flex-wrap gap-2 mt-2">
