@@ -115,12 +115,23 @@
             </div>
         </div>
 
+        <!-- NEW: Filter for dietary tags -->
+        <div class="flex flex-wrap items-center justify-center sm:justify-start mb-8 gap-2">
+            <h3 class="text-sm font-semibold text-gray-600">Dietary Filters:</h3>
+            <div id="tag-filters" class="flex flex-wrap gap-2">
+                <!-- Tag buttons will be dynamically generated here by the JavaScript -->
+            </div>
+        </div>
+
         <!-- Menu Grid: The main area where menu item cards are displayed. This ID will now contain category groups. -->
         <div id="menu-container">
             <!-- Initial skeleton loaders to show content is loading, improving perceived performance. -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="skeleton rounded-lg p-6 h-40"></div>
+                <div class="skeleton rounded-lg p-6 h-40"></div>
                 <div class="skeleton rounded-lg p-6 h-40 hidden md:block"></div>
+                <div class="skeleton rounded-lg p-6 h-40 hidden md:block"></div>
+                <div class="skeleton rounded-lg p-6 h-40 hidden lg:block"></div>
                 <div class="skeleton rounded-lg p-6 h-40 hidden lg:block"></div>
             </div>
         </div>
@@ -308,10 +319,11 @@
         const menuDataElement = document.getElementById('menu-data');
         const menuData = JSON.parse(menuDataElement.textContent);
 
-        // Global state variable to keep track of the currently active category, sort order, and search term.
+        // Global state variable to keep track of the currently active category, sort order, search term, and tags.
         let currentCategory = 'All';
         let currentSort = 'none';
         let currentSearchTerm = '';
+        let currentTags = [];
 
         // Custom, manually defined order for the categories.
         const categories = ['All', 'Appetizers', 'Sushi', 'Noodles', 'Main Courses', 'Desserts', 'Drinks'];
@@ -324,6 +336,7 @@
         const modalContent = document.getElementById('modal-content');
         const sortSelect = document.getElementById('sort-select');
         const searchInput = document.getElementById('search-input');
+        const tagFiltersContainer = document.getElementById('tag-filters');
 
         // Map tags to specific Tailwind color classes for a consistent look.
         const tagColors = {
@@ -346,7 +359,7 @@
             // Start with a fresh copy of the original data to avoid permanent mutation.
             let itemsToDisplay = [...menuData];
 
-            // First, filter by search term if one is provided.
+            // Filter by search term first.
             if (searchTerm) {
                 const lowerCaseSearchTerm = searchTerm.toLowerCase();
                 itemsToDisplay = itemsToDisplay.filter(item => 
@@ -355,7 +368,14 @@
                 );
             }
 
-            // Second, apply sorting based on the selected order.
+            // Filter by selected tags.
+            if (currentTags.length > 0) {
+                itemsToDisplay = itemsToDisplay.filter(item => 
+                    currentTags.every(tag => (item.tags || []).includes(tag))
+                );
+            }
+
+            // Apply sorting based on the selected order.
             if (sortOrder !== 'none') {
                 itemsToDisplay.sort((a, b) => {
                     const priceA = parseFloat(a.price);
@@ -401,7 +421,7 @@
             };
 
             // Handle rendering based on whether a specific category is selected or 'All' is active.
-            if (filterCategory === 'All' && !searchTerm) {
+            if (filterCategory === 'All' && searchTerm === '' && currentTags.length === 0) {
                 // Group items by category.
                 const groupedItems = itemsToDisplay.reduce((acc, item) => {
                     (acc[item.category] = acc[item.category] || []).push(item);
@@ -422,7 +442,7 @@
                     categoryGroup.appendChild(categoryHeading);
 
                     const gridContainer = document.createElement('div');
-                    // This is the key change: grid-cols-1 for mobile, md:grid-cols-2, lg:grid-cols-3 for larger screens.
+                    // This is the key change: grid-cols-1 to show 1 item per row.
                     gridContainer.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
 
                     groupedItems[category].forEach(item => {
@@ -440,7 +460,7 @@
                 }
                 
                 const flatListContainer = document.createElement('div');
-                // This is the key change: grid-cols-1 for mobile, md:grid-cols-2, lg:grid-cols-3 for larger screens.
+                // This is the key change: grid-cols-1 to show 1 item per row.
                 flatListContainer.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
 
                 itemsToDisplay.forEach(item => {
@@ -491,6 +511,35 @@
 
             // Set the selected value on the mobile dropdown to the current category.
             mobileCategorySelect.value = currentCategory;
+        };
+
+        /**
+         * Renders the dietary tag filter buttons.
+         */
+        const renderTagFilters = () => {
+            tagFiltersContainer.innerHTML = ''; // Clear existing buttons
+            const allTags = [...new Set(menuData.flatMap(item => item.tags || []))].sort();
+
+            allTags.forEach(tag => {
+                const button = document.createElement('button');
+                const isSelected = currentTags.includes(tag);
+                const colorClass = tagColors[tag] || "bg-gray-200 text-gray-800";
+                
+                button.textContent = tag;
+                button.className = `px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 ${
+                    isSelected ? 'bg-sky-500 text-white shadow-lg' : colorClass + ' hover:opacity-75'
+                }`;
+                button.addEventListener('click', () => {
+                    if (isSelected) {
+                        currentTags = currentTags.filter(t => t !== tag);
+                    } else {
+                        currentTags.push(tag);
+                    }
+                    renderTagFilters(); // Re-render to update active state
+                    renderMenu(currentCategory, currentSearchTerm, currentSort);
+                });
+                tagFiltersContainer.appendChild(button);
+            });
         };
 
         /**
@@ -553,6 +602,7 @@
         // Event listener for when the page has fully loaded.
         window.addEventListener('load', () => {
             renderCategories(); // Render the category tabs and dropdown.
+            renderTagFilters(); // Render the new tag filters.
             
             // Simulate a slight delay before rendering the menu to show the skeleton loader effect.
             setTimeout(() => {
