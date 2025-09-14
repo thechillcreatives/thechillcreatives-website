@@ -118,13 +118,10 @@
         <!-- Menu Grid: The main area where menu item cards are displayed. This ID will now contain category groups. -->
         <div id="menu-container">
             <!-- Initial skeleton loaders to show content is loading, improving perceived performance. -->
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="skeleton rounded-lg p-6 h-60"></div>
-                <div class="skeleton rounded-lg p-6 h-60"></div>
-                <div class="skeleton rounded-lg p-6 h-60"></div>
-                <div class="skeleton rounded-lg p-6 h-60 hidden md:block"></div>
-                <div class="skeleton rounded-lg p-6 h-60 hidden lg:block"></div>
-                <div class="skeleton rounded-lg p-6 h-60 hidden lg:block"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="skeleton rounded-lg p-6 h-40"></div>
+                <div class="skeleton rounded-lg p-6 h-40 hidden md:block"></div>
+                <div class="skeleton rounded-lg p-6 h-40 hidden lg:block"></div>
             </div>
         </div>
 
@@ -383,14 +380,14 @@
                 }).join('');
 
                 card.innerHTML = `
-                    <div class="flex flex-col items-start gap-4">
-                        <img src="${item.imageUrl}" alt="${item.name}" class="w-full h-40 object-cover rounded-lg">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                        <img src="${item.imageUrl}" alt="${item.name}" class="w-full sm:w-32 sm:h-32 object-cover rounded-lg flex-shrink-0">
                         <div class="flex-grow w-full">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold leading-tight">${item.name}</h3>
-                                <p class="text-2xl font-bold text-gray-700 ml-4">$${item.price}</p>
+                            <div class="flex flex-col sm:flex-row justify-between items-start mb-1">
+                                <h3 class="text-lg sm:text-xl font-semibold leading-tight">${item.name}</h3>
+                                <p class="text-xl sm:text-2xl font-bold text-gray-700 sm:ml-4">$${item.price}</p>
                             </div>
-                            <p class="text-gray-500 text-sm overflow-hidden text-ellipsis whitespace-nowrap">${item.description}</p>
+                            <p class="text-xs sm:text-sm text-gray-500">${item.description}</p>
                             <div class="flex flex-wrap gap-2 mt-2">
                                 ${tagsHtml}
                             </div>
@@ -422,7 +419,8 @@
                     categoryGroup.appendChild(categoryHeading);
 
                     const gridContainer = document.createElement('div');
-                    gridContainer.className = 'grid grid-cols-2 lg:grid-cols-3 gap-6';
+                    // This is the key change: grid-cols-1 for mobile, md:grid-cols-2, lg:grid-cols-3 for larger screens.
+                    gridContainer.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
 
                     groupedItems[category].forEach(item => {
                         gridContainer.appendChild(createMenuItemCard(item));
@@ -439,7 +437,8 @@
                 }
                 
                 const flatListContainer = document.createElement('div');
-                flatListContainer.className = 'grid grid-cols-2 lg:grid-cols-3 gap-6';
+                // This is the key change: grid-cols-1 for mobile, md:grid-cols-2, lg:grid-cols-3 for larger screens.
+                flatListContainer.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
 
                 itemsToDisplay.forEach(item => {
                     flatListContainer.appendChild(createMenuItemCard(item));
@@ -508,9 +507,6 @@
                 <div class="flex flex-col gap-4 w-full md:w-1/2">
                     <h2 class="text-3xl sm:text-4xl font-bold leading-tight">${item.name}</h2>
                     <p class="text-lg text-gray-500">${item.description}</p>
-                    <div class="flex flex-wrap gap-2">
-                        ${tagsHtml}
-                    </div>
                     <div class="border-t border-gray-200 pt-4 mt-4">
                         <p class="text-2xl font-bold text-sky-500 mb-2">$${item.price}</p>
                         <div class="text-sm text-gray-600">
@@ -578,6 +574,5 @@
             renderMenu(currentCategory, currentSearchTerm, currentSort);
         });
     </script>
-
 </body>
 </html>
