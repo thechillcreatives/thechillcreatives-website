@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Information -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Digital Menu</title>
+    
+    <!-- Tailwind CSS for styling. Loaded from CDN for simplicity. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles and Animations -->
+    <style>
+        /* Import the "Inter" font from Google Fonts for a clean, modern look. */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        /* Apply the font to the body. */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom scrollbar styling for better aesthetics. */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9ca3af;
+            border-radius: 10px;
+        }
+
+        /* Styling for the menu item cards, including a subtle hover effect. */
+        .menu-item-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .menu-item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Loading skeleton animation to provide a better user experience while content loads. */
+        .skeleton {
+            background: linear-gradient(90deg, #e5e7eb 25%, #d1d5db 50%, #e5e7eb 75%);
+            background-size: 400% 100%;
+            animation: skeleton-loading 1.5s ease-in-out infinite;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Main Container: Centers the content and provides overall padding. -->
+    <div class="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+
+        <!-- Header Section: Contains the menu title. -->
+        <header class="flex flex-col sm:flex-row justify-between items-center mb-12">
+            <div class="text-center sm:text-left">
+                <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight mb-2">Our Menu</h1>
+                <p class="text-xl text-gray-500">Fresh and delicious options for everyone.</p>
+            </div>
+        </header>
+
+        <!-- Filter and Sort Controls Navigation -->
+        <div class="flex flex-col sm:flex-row sm:flex-wrap justify-between items-center mb-8 gap-4">
+            
+            <!-- Search Bar -->
+            <div class="relative w-full sm:w-1/2 md:w-1/3 order-1 sm:order-none">
+                <input type="search" id="search-input" placeholder="Search menu items..." class="block w-full px-4 py-2 pl-10 rounded-full bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors duration-200 placeholder-gray-500">
+                <!-- Search icon -->
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Category Dropdown for Small Screens -->
+            <div class="relative w-full sm:hidden order-2 sm:order-none">
+                <select id="mobile-category-select" class="block w-full px-4 py-2 pr-8 rounded-full bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 appearance-none transition-colors duration-200">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Category Tabs for Large Screens -->
+            <nav class="hidden sm:flex overflow-x-auto whitespace-nowrap scrollbar-hide flex-grow order-2 sm:order-none">
+                <div id="category-tabs" class="inline-flex space-x-2 sm:space-x-4 p-1 rounded-full bg-gray-200">
+                    <!-- Category buttons will be dynamically generated here by the JavaScript. -->
+                </div>
+            </nav>
+
+            <!-- Sorting Dropdown -->
+            <div class="relative w-full sm:w-auto order-3 sm:order-none">
+                <select id="sort-select" class="block w-full sm:w-48 px-4 py-2 pr-8 rounded-full bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 appearance-none transition-colors duration-200">
+                    <option value="none">Sort By Price</option>
+                    <option value="low-to-high">Price: Low to High</option>
+                    <option value="high-to-low">Price: High to Low</option>
+                </select>
+                <!-- Custom dropdown arrow SVG -->
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Grid: The main area where menu item cards are displayed. This ID will now contain category groups. -->
+        <div id="menu-container">
+            <!-- Initial skeleton loaders to show content is loading, improving perceived performance. -->
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="skeleton rounded-lg p-6 h-60"></div>
+                <div class="skeleton rounded-lg p-6 h-60"></div>
+                <div class="skeleton rounded-lg p-6 h-60"></div>
+                <div class="skeleton rounded-lg p-6 h-60 hidden md:block"></div>
+                <div class="skeleton rounded-lg p-6 h-60 hidden lg:block"></div>
+                <div class="skeleton rounded-lg p-6 h-60 hidden lg:block"></div>
+            </div>
+        </div>
+
+        <!-- Detail Modal: A hidden overlay that shows detailed information about a menu item when clicked. -->
+        <div id="item-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4" style="display: none;">
+            <!-- Dark background overlay that closes the modal when clicked. -->
+            <div class="fixed inset-0 bg-black bg-opacity-50" onclick="closeModal()"></div>
+            
+            <!-- Modal content container. I've added mx-4 for better spacing on mobile. -->
+            <div class="relative bg-white rounded-xl w-full sm:max-w-2xl lg:max-w-3xl mx-4 p-6 sm:p-8 shadow-2xl transform transition-transform duration-300 scale-95" id="modal-content-wrapper">
+                <!-- Close button for the modal. -->
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+                
+                <!-- The area where the menu item details will be dynamically injected. -->
+                <div id="modal-content" class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+                    <!-- Content will be dynamically generated here by the JavaScript. -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Restaurant Details Footer: Provides contact, location, and hours information. -->
+    <footer class="bg-gray-200 text-gray-700 mt-12 py-12">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <!-- Contact Information Section -->
+                <div>
+                    <h4 class="text-xl font-bold mb-2">Contact Us</h4>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                    <p><strong>Email:</strong> info@restaurant.com</p>
+                </div>
+
+                <!-- Locations Section -->
+                <div>
+                    <h4 class="text-xl font-bold mb-2">Our Locations</h4>
+                    <p>123 Main Street, Anytown, USA</p>
+                    <p>456 Oak Avenue, Metropolis, USA</p>
+                </div>
+
+                <!-- Opening Hours Section -->
+                <div>
+                    <h4 class="text-xl font-bold mb-2">Opening Hours</h4>
+                    <p>Mon - Fri: 11:00 AM - 10:00 PM</p>
+                    <p>Sat - Sun: 12:00 PM - 11:00 PM</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-300 text-center text-sm text-gray-500">
+                <p>&copy; 2024 Modern Digital Menu. All rights reserved.</p>
+                <p class="mt-2">Powered by <a href="https://thechillcreatives.com" class="text-sky-600 hover:underline">The Chill Creatives</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript Logic -->
+<script type="application/json" id="menu-data">
+        [
+            {
+                "id": 1,
+                "name": "Spicy Volcano Roll",
+                "description": "A fiery mix of spicy tuna, avocado, and crunchy tempura flakes, topped with a special hot sauce.",
+                "price": "15.99",
+                "category": "Sushi",
+                "imageUrl": "https://www.mashed.com/img/gallery/volcano-roll-what-you-should-know-before-ordering/what-are-some-of-these-variations-1628197737.jpg",
+                "nutrition": { "calories": 450, "protein": "25g", "fat": "18g", "carbs": "45g" },
+                "tags": ["Spicy", "Chef's Choice"]
+            },
+            {
+                "id": 2,
+                "name": "Pad Thai with Prawns",
+                "description": "Classic Thai stir-fried rice noodles with prawns, egg, tofu, bean sprouts, and peanuts in a tangy tamarind sauce.",
+                "price": "18.50",
+                "category": "Noodles",
+                "imageUrl": "https://www.foodandwine.com/thmb/9Vb8WuiTba45J_7HEXV6M58bo2U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Shrimp-Pad-Thai-FT-RECIPE0324-3132ca704bc0457e836127dbda403368.jpg",
+                "nutrition": { "calories": 650, "protein": "30g", "fat": "20g", "carbs": "80g" },
+                "tags": []
+            },
+            {
+                "id": 3,
+                "name": "Miso Ramen",
+                "description": "Rich and savory miso broth with springy noodles, chashu pork, a soft-boiled egg, and green onions.",
+                "price": "16.00",
+                "category": "Noodles",
+                "imageUrl": "https://inquiringchef.com/wp-content/uploads/2022/11/Easy-Miso-Ramen_square-0723.jpg",
+                "nutrition": { "calories": 720, "protein": "35g", "fat": "25g", "carbs": "85g" },
+                "tags": []
+            },
+            {
+                "id": 4,
+                "name": "Assorted Sashimi Platter",
+                "description": "Chef's selection of the freshest salmon, tuna, and yellowtail sashimi, served with wasabi and soy sauce.",
+                "price": "25.00",
+                "category": "Sushi",
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSHUSa7ea5W3qvNYJNygTeF6UjsRUhcFSsaQ&s",
+                "nutrition": { "calories": 300, "protein": "40g", "fat": "10g", "carbs": "5g" },
+                "tags": ["Gluten-Free", "Chef's Choice"]
+            },
+            {
+                "id": 5,
+                "name": "Vegetable Tempura",
+                "description": "Lightly battered and deep-fried seasonal vegetables, served with a dashi dipping sauce.",
+                "price": "12.00",
+                "category": "Appetizers",
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQitx60gXJ36ly-WMMZ78b52VTLUDgzf1QhvQ&s",
+                "nutrition": { "calories": 380, "protein": "8g", "fat": "25g", "carbs": "35g" },
+                "tags": ["Vegetarian"]
+            },
+            {
+                "id": 6,
+                "name": "Chicken Teriyaki Bento",
+                "description": "Grilled chicken with a sweet teriyaki glaze, served with steamed rice, salad, and a side of California roll.",
+                "price": "20.99",
+                "category": "Main Courses",
+                "imageUrl": "https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/bzronhtm/677d56d7-bfb2-471f-958b-c0eafcd897b2.jpg",
+                "nutrition": { "calories": 800, "protein": "45g", "fat": "30g", "carbs": "90g" },
+                "tags": []
+            },
+            {
+                "id": 7,
+                "name": "Green Tea Mochi",
+                "description": "Soft and chewy rice cakes filled with sweet green tea ice cream.",
+                "price": "7.00",
+                "category": "Desserts",
+                "imageUrl": "https://fullofplants.com/wp-content/uploads/2022/01/vegan-matcha-nama-white-chocolate-mochi-dairy-free-tender-japanese-inspired-dairy-free-thumb.jpg",
+                "nutrition": { "calories": 250, "protein": "2g", "fat": "8g", "carbs": "45g" },
+                "tags": ["Vegetarian"]
+            },
+            {
+                "id": 8,
+                "name": "Spicy Edamame",
+                "description": "Steamed edamame tossed with chili oil, garlic, and sea salt.",
+                "price": "6.00",
+                "category": "Appetizers",
+                "imageUrl": "https://www.joyousapron.com/wp-content/uploads/2024/03/spicy-garlic-edamame-sq.jpg",
+                "nutrition": { "calories": 150, "protein": "10g", "fat": "8g", "carbs": "10g" },
+                "tags": ["Spicy", "Vegetarian"]
+            },
+            {
+                "id": 9,
+                "name": "Tuna Nigiri",
+                "description": "A classic sushi piece with a slice of fresh tuna draped over a bed of seasoned rice.",
+                "price": "8.50",
+                "category": "Sushi",
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7QB037i7679-KYXc1c8yKCHndRzxZlAokmA&s",
+                "nutrition": { "calories": 80, "protein": "7g", "fat": "1g", "carbs": "12g" },
+                "tags": ["Gluten-Free"]
+            },
+            {
+                "id": 10,
+                "name": "Iced Green Tea",
+                "description": "Refreshing iced green tea with a touch of mint.",
+                "price": "4.00",
+                "category": "Drinks",
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvQ6CzZjB9NABKannfjsr1GGKq_oVWqYsRBg&s",
+                "nutrition": { "calories": 5, "protein": "0g", "fat": "0g", "carbs": "1g" },
+                "tags": ["Vegetarian", "Gluten-Free"]
+            },
+            {
+                "id": 11,
+                "name": "Sake Flight",
+                "description": "A curated selection of three different sakes to sample.",
+                "price": "22.00",
+                "category": "Drinks",
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTozZKEmJH3K5hPpf_sK568cK0l-6qnGHAKjA&s",
+                "nutrition": { "calories": 200, "protein": "0g", "fat": "0g", "carbs": "5g" },
+                "tags": ["Chef's Choice"]
+            },
+            {
+                "id": 12,
+                "name": "Chicken Katsu",
+                "description": "Crispy fried chicken cutlet served with a rich curry sauce and steamed rice.",
+                "price": "17.50",
+                "category": "Main Courses",
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLSfn6gv8jW9U6dIG0WRKLZxrxhqlj-P8pxA&s",
+                "nutrition": { "calories": 950, "protein": "40g", "fat": "50g", "carbs": "80g" },
+                "tags": ["Spicy"]
+            }
+        ]
+    </script>
+    <script>
+        // Get the JSON data from the script tag and parse it.
+        const menuDataElement = document.getElementById('menu-data');
+        const menuData = JSON.parse(menuDataElement.textContent);
+
+        // Global state variable to keep track of the currently active category, sort order, and search term.
+        let currentCategory = 'All';
+        let currentSort = 'none';
+        let currentSearchTerm = '';
+
+        // Custom, manually defined order for the categories.
+        const categories = ['All', 'Appetizers', 'Sushi', 'Noodles', 'Main Courses', 'Desserts', 'Drinks'];
+
+        // Get references to key DOM elements.
+        const menuContainer = document.getElementById('menu-container');
+        const categoryTabs = document.getElementById('category-tabs');
+        const mobileCategorySelect = document.getElementById('mobile-category-select');
+        const itemModal = document.getElementById('item-modal');
+        const modalContent = document.getElementById('modal-content');
+        const sortSelect = document.getElementById('sort-select');
+        const searchInput = document.getElementById('search-input');
+
+        // Map tags to specific Tailwind color classes for a consistent look.
+        const tagColors = {
+            "Spicy": "bg-red-100 text-red-800",
+            "Vegetarian": "bg-green-100 text-green-800",
+            "Gluten-Free": "bg-yellow-100 text-yellow-800",
+            "Chef's Choice": "bg-sky-100 text-sky-800"
+        };
+        
+        /**
+         * Renders the menu items on the page based on the selected category, search term, and sort order.
+         * @param {string} filterCategory - The category to filter the menu by. Defaults to 'All'.
+         * @param {string} searchTerm - The search term to filter by name or description. Defaults to an empty string.
+         * @param {string} sortOrder - The sort order. Can be 'low-to-high', 'high-to-low', or 'none'.
+         */
+        const renderMenu = (filterCategory = 'All', searchTerm = '', sortOrder = 'none') => {
+            // Clear the existing menu items before rendering the new ones.
+            menuContainer.innerHTML = '';
+            
+            // Start with a fresh copy of the original data to avoid permanent mutation.
+            let itemsToDisplay = [...menuData];
+
+            // First, filter by search term if one is provided.
+            if (searchTerm) {
+                const lowerCaseSearchTerm = searchTerm.toLowerCase();
+                itemsToDisplay = itemsToDisplay.filter(item => 
+                    item.name.toLowerCase().includes(lowerCaseSearchTerm) ||
+                    item.description.toLowerCase().includes(lowerCaseSearchTerm)
+                );
+            }
+
+            // Second, apply sorting based on the selected order.
+            if (sortOrder !== 'none') {
+                itemsToDisplay.sort((a, b) => {
+                    const priceA = parseFloat(a.price);
+                    const priceB = parseFloat(b.price);
+                    if (sortOrder === 'low-to-high') {
+                        return priceA - priceB;
+                    } else {
+                        return priceB - priceA;
+                    }
+                });
+            }
+
+            // A helper function to create a single menu item card DOM element
+            const createMenuItemCard = (item) => {
+                const card = document.createElement('div');
+                card.className = 'menu-item-card bg-white rounded-lg shadow-md p-4 cursor-pointer hover:shadow-lg transition-all';
+                card.addEventListener('click', () => openModal(item));
+
+                const tagsHtml = (item.tags || []).map(tag => {
+                    const colorClass = tagColors[tag] || "bg-gray-200 text-gray-800";
+                    return `<span class="text-xs font-semibold px-2.5 py-1 rounded-full ${colorClass}">${tag}</span>`;
+                }).join('');
+
+                card.innerHTML = `
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                        <img src="${item.imageUrl}" alt="${item.name}" class="w-32 h-32 sm:w-24 sm:h-24 object-cover rounded-lg mb-2 sm:mb-0">
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-xl font-semibold leading-tight">${item.name}</h3>
+                                <p class="text-2xl font-bold text-gray-700 ml-4">$${item.price}</p>
+                            </div>
+                            <p class="text-gray-500 text-sm">${item.description}</p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                ${tagsHtml}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                return card;
+            };
+
+            // Handle rendering based on whether a specific category is selected or 'All' is active.
+            if (filterCategory === 'All' && !searchTerm) {
+                // Group items by category.
+                const groupedItems = itemsToDisplay.reduce((acc, item) => {
+                    (acc[item.category] = acc[item.category] || []).push(item);
+                    return acc;
+                }, {});
+
+                // Get a sorted list of category names (to ensure consistent order).
+                const sortedCategories = categories.filter(cat => groupedItems[cat]);
+                
+                // Iterate through the sorted categories and render each group.
+                sortedCategories.forEach(category => {
+                    const categoryGroup = document.createElement('div');
+                    categoryGroup.className = 'mb-10'; // Add some bottom margin to separate sections
+
+                    const categoryHeading = document.createElement('h2');
+                    categoryHeading.className = 'text-3xl font-bold text-gray-800 mb-6';
+                    categoryHeading.textContent = category;
+                    categoryGroup.appendChild(categoryHeading);
+
+                    const gridContainer = document.createElement('div');
+                    gridContainer.className = 'grid grid-cols-2 lg:grid-cols-3 gap-6';
+
+                    groupedItems[category].forEach(item => {
+                        gridContainer.appendChild(createMenuItemCard(item));
+                    });
+
+                    categoryGroup.appendChild(gridContainer);
+                    menuContainer.appendChild(categoryGroup);
+                });
+
+            } else {
+                // For a specific category or when a search term is active, just render a flat list.
+                if (filterCategory !== 'All') {
+                    itemsToDisplay = itemsToDisplay.filter(item => item.category === filterCategory);
+                }
+                
+                const flatListContainer = document.createElement('div');
+                flatListContainer.className = 'grid grid-cols-2 lg:grid-cols-3 gap-6';
+
+                itemsToDisplay.forEach(item => {
+                    flatListContainer.appendChild(createMenuItemCard(item));
+                });
+                menuContainer.appendChild(flatListContainer);
+            }
+        };
+        
+
+        /**
+         * Renders the category filter tabs (desktop) and dropdown options (mobile).
+         */
+        const renderCategories = () => {
+            // Clear existing tabs and dropdown options.
+            categoryTabs.innerHTML = '';
+            mobileCategorySelect.innerHTML = '';
+
+            // Create 'All' option for the mobile dropdown first.
+            const allOption = document.createElement('option');
+            allOption.value = 'All';
+            allOption.textContent = 'All Categories';
+            mobileCategorySelect.appendChild(allOption);
+            
+            // Loop through the categories to create both buttons and options.
+            categories.forEach(category => {
+                // Create button for desktop tabs
+                const button = document.createElement('button');
+                button.textContent = category;
+                button.className = `px-4 py-2 rounded-full font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 ${
+                    currentCategory === category ? 'bg-sky-500 text-white shadow-lg' : 'bg-transparent text-gray-700 hover:bg-gray-300'
+                }`;
+                button.addEventListener('click', () => {
+                    currentCategory = category;
+                    renderCategories(); // Re-render to update active state
+                    renderMenu(currentCategory, currentSearchTerm, currentSort);
+                });
+                categoryTabs.appendChild(button);
+
+                // Create option for mobile dropdown
+                if (category !== 'All') { // 'All Categories' is already added
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category;
+                    mobileCategorySelect.appendChild(option);
+                }
+            });
+
+            // Set the selected value on the mobile dropdown to the current category.
+            mobileCategorySelect.value = currentCategory;
+        };
+
+        /**
+         * Opens the detail modal with content for a specific menu item.
+         * @param {object} item - The menu item object to display.
+         */
+        const openModal = (item) => {
+            // Generate the HTML for the tags, if any exist.
+            const tagsHtml = (item.tags || []).map(tag => {
+                const colorClass = tagColors[tag] || "bg-gray-200 text-gray-800";
+                return `<span class="text-sm font-semibold px-3 py-1 rounded-full ${colorClass}">${tag}</span>`;
+            }).join('');
+
+            // Populate the modal with the item's data.
+            modalContent.innerHTML = `
+                <img src="${item.imageUrl}" alt="${item.name}" class="w-full md:w-1/2 rounded-xl object-cover shadow-lg max-h-96">
+                <div class="flex flex-col gap-4 w-full md:w-1/2">
+                    <h2 class="text-3xl sm:text-4xl font-bold leading-tight">${item.name}</h2>
+                    <p class="text-lg text-gray-500">${item.description}</p>
+                    <div class="flex flex-wrap gap-2">
+                        ${tagsHtml}
+                    </div>
+                    <div class="border-t border-gray-200 pt-4 mt-4">
+                        <p class="text-2xl font-bold text-sky-500 mb-2">$${item.price}</p>
+                        <div class="text-sm text-gray-600">
+                            <p><strong>Calories:</strong> ${item.nutrition.calories}</p>
+                            <p><strong>Protein:</strong> ${item.nutrition.protein}</p>
+                            <p><strong>Fat:</strong> ${item.nutrition.fat}</p>
+                            <p><strong>Carbs:</strong> ${item.nutrition.carbs}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            // Make the modal visible.
+            itemModal.style.display = 'flex';
+            // Disable body scrolling when the modal is open.
+            document.body.classList.add('overflow-hidden');
+            
+            // Animate the modal into view using a small timeout.
+            setTimeout(() => {
+                document.getElementById('modal-content-wrapper').classList.remove('scale-95');
+                document.getElementById('modal-content-wrapper').classList.add('scale-100');
+            }, 10);
+        };
+
+        /**
+         * Closes the detail modal.
+         */
+        const closeModal = () => {
+            // Animate the modal out of view.
+            document.getElementById('modal-content-wrapper').classList.add('scale-95');
+            document.getElementById('modal-content-wrapper').classList.remove('scale-100');
+            
+            // Hide the modal completely after the animation completes.
+            setTimeout(() => {
+                itemModal.style.display = 'none';
+                // Re-enable body scrolling.
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        };
+
+        // Event listener for when the page has fully loaded.
+        window.addEventListener('load', () => {
+            renderCategories(); // Render the category tabs and dropdown.
+            
+            // Simulate a slight delay before rendering the menu to show the skeleton loader effect.
+            setTimeout(() => {
+                renderMenu(currentCategory, currentSearchTerm, currentSort);
+            }, 500);
+        });
+
+        // Add an event listener for changes to the sort dropdown.
+        sortSelect.addEventListener('change', (event) => {
+            currentSort = event.target.value;
+            renderMenu(currentCategory, currentSearchTerm, currentSort);
+        });
+
+        // Add an event listener for changes to the mobile category dropdown.
+        mobileCategorySelect.addEventListener('change', (event) => {
+            currentCategory = event.target.value;
+            renderMenu(currentCategory, currentSearchTerm, currentSort);
+        });
+
+        // Add a keyup event listener to the search input for real-time filtering.
+        searchInput.addEventListener('input', (event) => {
+            currentSearchTerm = event.target.value;
+            renderMenu(currentCategory, currentSearchTerm, currentSort);
+        });
+    </script>
+
+</body>
+</html>
